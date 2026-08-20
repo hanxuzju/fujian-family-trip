@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>福建亲子六日游 · 平潭+泉州</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --accent: #f59e0b;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --tip-bg: #fffbeb;
+    --tip-border: #fbbf24;
+    --success: #10b981;
+    --tag-bg: #eff6ff;
+    --tag-text: #2563eb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+    color: white;
+    padding: 28px 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -10%;
+    width: 120%;
+    height: 60px;
+    background: var(--bg);
+    border-radius: 50% 50% 0 0;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .header-meta {
+    font-size: 13px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+  .header-meta span {
+    display: inline-block;
+    margin-right: 12px;
+    margin-bottom: 4px;
+  }
+
+  /* Content */
+  .content {
+    padding: 0 16px 40px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* Overview Table */
+  .overview-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    overflow-x: auto;
+  }
+  .overview-card h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--primary);
+  }
+  .overview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 360px;
+  }
+  .overview-table th {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .overview-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .overview-table tr:last-child td { border-bottom: none; }
+
+  /* Day Card */
+  .day-card {
+    background: var(--card);
+    border-radius: 14px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .day-header {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .day-header small {
+    font-weight: 400;
+    opacity: 0.85;
+    font-size: 13px;
+    display: block;
+    margin-top: 2px;
+  }
+  .day-body {
+    padding: 16px 18px;
+  }
+
+  /* Section within day */
+  .section {
+    margin-bottom: 18px;
+  }
+  .section:last-child { margin-bottom: 0; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-label .icon {
+    font-size: 14px;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .section p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* Tip box */
+  .tip {
+    background: var(--tip-bg);
+    border-left: 3px solid var(--tip-border);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #92400e;
+  }
+  .tip strong { color: #78350f; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+
+  /* Info Card */
+  .info-card {
+    background: var(--card);
+    border-radius: 14px;
+    margin: 20px 0;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .info-card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 14px 0 6px;
+    color: var(--text);
+  }
+  .info-card h3:first-of-type { margin-top: 0; }
+  .info-card p, .info-card li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .info-card ul {
+    padding-left: 18px;
+    margin-bottom: 8px;
+  }
+
+  /* Cost Table */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 10px 0;
+  }
+  .cost-table th {
+    background: #f1f5f9;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .cost-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cost-table tr:last-child td {
+    border-bottom: none;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* Reservation Table */
+  .reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 10px 0;
+    min-width: 420px;
+  }
+  .reservation-table th {
+    background: #f1f5f9;
+    padding: 7px 8px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .reservation-table td {
+    padding: 7px 8px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px 4px 2px 0;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .checklist li {
+    padding: 4px 0 4px 24px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 16px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px 16px 40px;
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  .footer .heart { color: #ef4444; }
+
+  /* Nav dots */
+  .nav-dots {
+    position: fixed;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.2);
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+  .nav-dot.active {
+    background: var(--primary);
+    transform: scale(1.4);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 0; height: 0; }
+
+  /* Responsive fine-tuning */
+  @media (min-width: 768px) {
+    body { font-size: 16px; }
+    .header { padding: 36px 24px 30px; }
+    .header h1 { font-size: 26px; }
+    .content { padding: 0 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav Dots -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- Header -->
+<header class="header" id="top">
+  <h1>🏖️ 福建亲子六日游</h1>
+  <div class="header-meta">
+    <span>📅 2026.9.25（周五）— 9.30（周三）</span><br>
+    <span>👨‍👩‍👧 夫妻带女儿出行（10岁）</span>
+    <span>🚄 高铁 + 当地打车/租车</span><br>
+    <span>🎯 休闲慢游，不赶路，每天 1-2 个重点</span>
+  </div>
+</header>
+
+<div class="content">
+
+<!-- Overview -->
+<div class="overview-card" id="overview">
+  <h2>📋 行程总览</h2>
+  <table class="overview-table">
+    <thead>
+      <tr><th>日期</th><th>主题</th><th>住宿</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>9/25 周五</td>
+        <td>杭州→平潭，龙王头海滩 + 车站夜市</td>
+        <td>RED喜居酒店</td>
+      </tr>
+      <tr>
+        <td>9/26 周六</td>
+        <td>平潭北线：仙人井→北港→F2廊道→风车田日落</td>
+        <td>RED喜居酒店</td>
+      </tr>
+      <tr>
+        <td>9/27 周日</td>
+        <td>平潭南线：浮潜→田美澳→远垱澳→崎沙澳日落</td>
+        <td>RED喜居酒店</td>
+      </tr>
+      <tr>
+        <td>9/28 周一</td>
+        <td>平潭→泉州，西街簪花 + 提线木偶戏</td>
+        <td>Wild·奢野花园</td>
+      </tr>
+      <tr>
+        <td>9/29 周二</td>
+        <td>开元寺 + 西街 + 钟楼 + 中山路 + 关岳庙</td>
+        <td>Wild·奢野花园</td>
+      </tr>
+      <tr>
+        <td>9/30 周三</td>
+        <td>海交馆 + 非遗馆 + 返程苍南</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Day 1 -->
+<div class="day-card" id="day1">
+  <div class="day-header">
+    Day 1 · 9月25日（周五）
+    <small>奔赴海岛</small>
+  </div>
+  <div class="day-body">
+    <div class="section">
+      <div class="section-label"><span class="icon">🚄</span> 交通</div>
+      <p>杭州南 → 平潭，<strong>G1605</strong>（09:15 发，14:17 到，约5小时）。车上解决午餐，可以准备些零食和水果。到站后打车前往住处。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🏨</span> 住宿</div>
+      <p><strong>RED喜居酒店（平潭龙王头沙滩店）</strong>— 浴缸亲子双床房（去哪儿网预订）。酒店紧邻龙王头海滩，出门就能踩沙滩，带浴缸的亲子房型很适合带小朋友，泡个澡洗去一天的沙子。不含早餐，早餐在外面找当地美食解决。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🏖️</span> 下午</div>
+      <div class="section-title">龙王头海滩</div>
+      <p>安顿好后直奔龙王头海滩，这是平潭最大的公共海滩，离城区近，沙质细腻。下午阳光正好，让小朋友先痛快地玩沙、踩浪，感受一下海岛的节奏。海滩免费开放，傍晚时分光线柔和，适合拍照。</p>
+      <div class="tip"><strong>出门前提醒：</strong>带个小袋子，沙滩上能捡到漂亮的小贝壳，装回来当纪念。</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🍽️</span> 傍晚</div>
+      <div class="section-title">海鲜晚餐</div>
+      <p>平潭的海鲜大排档集中在潭城镇，推荐尝试：时来运转（地瓜粉做皮的特色小吃）、八珍炒糕、紫菜焖饭、各类新鲜海鱼。人均 80-120 元，分量足。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🌙</span> 夜晚</div>
+      <div class="section-title">平潭车站夜市</div>
+      <p>饭后去潭城镇逛夜市，平潭的夜市热闹接地气，各种海鲜烧烤、本地小吃、水果摊，可以边逛边吃。推荐尝尝烤生蚝、铁板鱿鱼、平潭特色的天长地久（油炸甜品，外酥内软），还有各种新鲜果汁。小朋友一定会喜欢夜市的热闹氛围。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Day 2 -->
+<div class="day-card" id="day2">
+  <div class="day-header">
+    Day 2 · 9月26日（周六）
+    <small>平潭北线环岛</small>
+  </div>
+  <div class="day-body">
+    <div class="section">
+      <div class="section-label"><span class="icon">🌅</span> 日出（根据天气取舍）</div>
+      <p>Day 2 和 Day 3 早上都安排了看日出的可能，根据当天天气决定哪天去——晴天那天看日出，阴天就睡懒觉。9 月底平潭日出约 5:40，看日出海滩根据住宿位置就近选择。看完日出回酒店洗漱化妆、拿上当日随身物品，出发吃早饭。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🥣</span> 早餐</div>
+      <p>酒店旁边的<strong>"郑记潮汕海鲜砂锅粥（第三店）"</strong>，早上 7:00 就开始营业，海鲜砂锅粥鲜暖开胃，很适合看完日出后来一碗。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">📍</span> 第一站</div>
+      <div class="section-title">仙人井</div>
+      <p>上午出发先去仙人井，这是一个天然海蚀洞穴，海浪涌入洞穴拍打岩壁发出轰隆巨响，非常壮观。不用全程走完步道，看一眼主井即可，约 20-30 分钟。需提前在"平潭旅游"公众号预约门票。</p>
+      <div class="tip"><strong>备选：镜沙</strong>——如果不想去仙人井，可以换成镜沙。导航搜"星辰大海·镜沙"，这里有少见的黑色火山岩礁石沙滩，被称为国内"小冰岛"。退潮时可进入黑石洞拍逆光剪影，也可在礁石区赶海找小螃蟹和贝壳。游玩约 1-1.5 小时，注意礁石湿滑。</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">📍</span> 第二站</div>
+      <div class="section-title">北港文创村</div>
+      <p>从仙人井沿海边公路开约 10 分钟到达北港村，这里是平潭最有特色的石头厝村落，整村用花岗岩建造，错落有致地分布在山坡上，面朝大海。村里聚集了不少文创小店、咖啡馆和手作工坊，很适合带孩子慢慢逛、拍照。石头厝博物馆可以了解海岛渔民的生活历史。游玩约 1-1.5 小时。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🍽️</span> 午餐（待定）</div>
+      <p>北港村餐饮据说偏贵、有宰客情况，不一定在村里吃。可以在从北港村打车前往 F2 观景台的沿途找一家口碑好的店吃午饭，具体餐馆回头再定。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">📍</span> 第三站</div>
+      <div class="section-title">北部湾生态廊道 F2 观景台</div>
+      <p>从北港村沿北部生态廊道前往 F2 观景台，这段沿海公路本身就是平潭最美的风景道之一，曾获评全国"十大最美农村路"。F2 观景台的核心亮点是一段 45 米长的悬空玻璃栈道，站在上面脚下就是悬崖和大海，可以同时看到碧海、风车阵和沿海 S 弯公路，视野极其开阔。小朋友走在玻璃上既紧张又兴奋，是很棒的体验。游玩约 1 小时。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🌇</span> 日落</div>
+      <div class="section-title">长江澳风车田</div>
+      <p>从 F2 观景台直接前往长江澳风车田看日落，不用走回头路。夕阳西下时，金色光线洒在白色风车和沙滩上，是平潭最美的时刻。巨大的风车矗立在金色沙滩上，退潮时可以踩水玩沙，涨潮时风车与浪花同框也很壮观。找一片沙滩坐下来，看着太阳一点点沉入海面，非常治愈。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🍽️</span> 晚餐（待定）</div>
+      <p>日落后打车去吃饭，具体餐馆回头再定。</p>
+    </div>
+
+    <div class="tip"><strong>🌊 蓝眼泪提示：</strong>9 月底蓝眼泪已过高峰期（4-6 月最盛），但仍有概率看到。如果天气好（晴天 + 南风 + 涨潮），回住处后可以留意附近海滩是否有蓝眼泪。关注"平潭蓝眼泪预报"微信公众号获取实时信息。</div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🌙</span> 夜宵（可选）</div>
+      <p>回酒店后如果还精神，可以出来吃个夜宵。酒店周边的"老武汉臭豆腐凉皮"和"二元烧烤"都营业到凌晨，臭豆腐配凉皮清爽解腻，烧烤配啤酒也很放松。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Day 3 -->
+<div class="day-card" id="day3">
+  <div class="day-header">
+    Day 3 · 9月27日（周日）
+    <small>平潭南线</small>
+  </div>
+  <div class="day-body">
+    <div class="section">
+      <div class="section-label"><span class="icon">🌅</span> 日出（根据天气取舍）</div>
+      <p>如果 Day 2 因为天气没看成日出，今天就安排上；反之今天就睡个懒觉。看日出海滩根据住宿位置就近选择，9 月底日出约 5:40。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🥣</span> 早餐</div>
+      <p>同 Day 2，酒店旁边的"郑记潮汕海鲜砂锅粥（第三店）"，早上 7:00 营业。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🤿</span> 上午</div>
+      <div class="section-title">浮潜体验</div>
+      <p>上午去体验平潭的浮潜项目。9 月底平潭海水温度约 28°C，非常适合下水。浮潜配备面镜和呼吸管，在水面漂浮观赏海底礁石和鱼群，门槛较低，10 岁小朋友在教练陪同下可以参加。建议选择有资质的水上运动俱乐部（如悦海水上运动俱乐部等），费用约 268-288 元/人，含装备和教练指导，全程约 1-1.5 小时。建议提前电话确认对儿童的年龄要求并预约。</p>
+      <div class="tip"><strong>出门前提醒：</strong>带好手机防水袋（水下拍照用）和一套换洗衣物，浮潜后会湿身。</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🏖️</span> 下午</div>
+      <div class="section-title">坛南湾三澳连游</div>
+      <p><strong>田美澳：</strong>打车先到坛南湾的田美澳海滩，这里是坛南湾的核心沙滩区，沙子极细柔软，海水通透呈玻璃蓝色。沙滩上有网红秋千、心形座椅、彩色躺椅等打卡设施，拍照非常出片。还有摩托艇、帆船、快艇、桨板等水上项目（单项约 50-100 元），不过这些项目大概率会湿身，不太建议玩；如果一定要玩，需提前备好换洗衣物。午饭在田美澳附近解决，玩够之后乘坐观光车前往下一个澳口。</p>
+      <p><strong>远垱澳（白金海滩）：</strong>风格和田美澳截然不同——这里以大片的黑色礁石群闻名，黑礁石配上白色浪花和蓝色大海，视觉冲击力很强，是平潭"小冰岛"风格的代表。在礁石上走走拍拍，打卡拍照约 40 分钟。</p>
+      <p><strong>崎沙澳：</strong>傍晚坐观光车前往崎沙澳看日落。崎沙澳是坛南湾沿线观赏日落的绝佳位置，沙滩开阔、视野无遮挡，太阳缓缓沉入海面的画面非常治愈。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🍽️</span> 晚餐</div>
+      <div class="section-title">阿弟海鲜馆</div>
+      <p>日落后步行前往崎沙澳附近的"阿弟海鲜馆"吃平潭的告别晚餐。这是当地口碑不错的海鲜馆子，点一桌新鲜海鲜，给平潭之旅画上圆满的句号。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🌊</span> 夜晚</div>
+      <div class="section-title">坛南湾等蓝眼泪</div>
+      <p>晚餐后回到坛南湾沙滩，这是平潭最后一晚，也是追蓝眼泪的最佳机会——坛南湾光污染少，是公认的最佳追泪地点。建议 21:00 以后、月亮不亮的时候前往，关注"平潭蓝眼泪预报"微信公众号获取实时信息。最佳条件：晴天 + 南风 + 涨潮。坐在沙滩上听着海浪声，即使蓝眼泪没出现，这片星空和海浪本身就是平潭最好的告别礼物。</p>
+    </div>
+
+    <div class="section">
+      <p>尽兴后回酒店，收拾行李，明天转战泉州。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🌙</span> 夜宵（可选）</div>
+      <p>平潭最后一晚，回酒店后意犹未尽的话可以再出来吃个夜宵。酒店周边的"老武汉臭豆腐凉皮"和"二元烧烤"都营业到凌晨，给平潭的夜晚再来个收尾。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Day 4 -->
+<div class="day-card" id="day4">
+  <div class="day-header">
+    Day 4 · 9月28日（周一）
+    <small>转战泉州</small>
+  </div>
+  <div class="day-body">
+    <div class="section">
+      <div class="section-label"><span class="icon">🚄</span> 交通</div>
+      <p>平潭 → 泉州，<strong>D6294</strong>（10:45 发，12:36 到，约1小时51分）。到站后打车前往西街住处（约 20 分钟），放下行李。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🏨</span> 住宿</div>
+      <p><strong>Wild·奢野花园 | To Nature设计师民宿（西街开元寺店）</strong>— Loft滑滑梯亲子房（携程预订）。房间有上下铺和滑滑梯，设计感强，好看又好玩，小朋友一定会玩疯。出门就是西街和开元寺，步行可达泉州古城主要景点。不含早餐，早餐在外面找当地美食解决。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🍽️</span> 午餐（待定）</div>
+      <p>就近住处或西街周边解决，具体餐馆回头再定。泉州小吃种类极其丰富：面线糊（加醋肉、大肠、油条是经典搭配）、四果汤（消暑甜品，小朋友最爱）、咸饭配牛肉羹。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🌸</span> 下午</div>
+      <div class="section-title">西街簪花体验</div>
+      <p>到达泉州第一件事——先美美拍照。簪花店选定<strong>"花秀时光簪花（杨姐西街店）"</strong>，提供完整的簪花围造型和传统服饰，199/人。带女儿一起簪花拍照，以骑楼老街和开元寺双塔为背景，非常出片。建议穿浅色衣服搭配簪花更上镜。体验约 1.5-2 小时。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🍽️</span> 晚餐（待定）</div>
+      <p>就近西街周边解决，具体餐馆回头再定。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🎭</span> 晚上</div>
+      <div class="section-title">提线木偶戏（中闽百汇）</div>
+      <p>前往中闽百汇一楼看一场提线木偶表演（票价约 30-50 元）。泉州提线木偶是国家级非遗，有上千年历史，木偶在演员手中翻飞跳跃、斟酒写字，非常精彩，10 岁的小朋友会看得入迷。这里还能亲手体验互动，比大剧场远远看着更有意思。演出约 40 分钟，需提前在大众点评购票并联系商家预约场次。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Day 5 -->
+<div class="day-card" id="day5">
+  <div class="day-header">
+    Day 5 · 9月29日（周二）
+    <small>古城漫步</small>
+  </div>
+  <div class="day-body">
+    <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px;">今天全程在泉州古城内步行，节奏很慢，不用赶场。早午晚餐均在周边解决（餐馆待定）。</p>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🛕</span> 上午</div>
+      <div class="section-title">开元寺</div>
+      <p>上午前往开元寺，这是泉州的地标，始建于唐代的千年古寺，免费开放，需提前在"泉州开元寺"公众号预约。寺内有两座宋代石塔（东西塔），是泉州天际线的标志。大雄宝殿的飞天斗拱值得细看，24 尊飞天乐伎雕刻精美。寺内古榕遮天，氛围宁静，适合带孩子慢慢走。可按需约馆内讲解，带孩子听讲解会更有收获。约 1.5 小时。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🏮</span> 上午/中午</div>
+      <div class="section-title">西街</div>
+      <p>从开元寺出来就是西街，这条千年古街两侧骑楼林立，各种老字号和小吃摊。一路走一路吃：润饼菜、海蛎煎、花生汤、麻糬……边走边逛，午饭也可以在西街解决。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🏛️</span> 下午</div>
+      <div class="section-title">钟楼 + 中山路</div>
+      <p>沿着西街走到尽头就是泉州钟楼，这里是古城的中心地标。从钟楼拐入中山路，这条骑楼长廊是泉州最繁华的商业街，两侧南洋风格的骑楼建筑保存完好，很适合拍照。一路逛逛走走，感受老泉州的生活气息。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">⛩️</span> 傍晚</div>
+      <div class="section-title">通淮关岳庙</div>
+      <p>从中山路步行可达通淮关岳庙（<strong>18:30 闭园</strong>，注意安排好时间）。这是泉州香火最旺的庙宇，同时供奉关羽和岳飞，当地人亲切地称"关岳庙"。庙宇虽不大但气势恢宏，最值得看的是屋顶的剪瓷雕——用彩色碎瓷片拼贴出的人物花鸟栩栩如生，层层叠叠布满整个屋脊，是闽南建筑艺术的巅峰代表。庙内终年烟雾缭绕，求签许愿的本地人络绎不绝，可以带孩子感受一下泉州民间信仰的浓厚氛围。免费开放，约 30 分钟。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Day 6 -->
+<div class="day-card" id="day6">
+  <div class="day-header">
+    Day 6 · 9月30日（周三）
+    <small>告别与归途</small>
+  </div>
+  <div class="day-body">
+    <div class="section">
+      <div class="section-label"><span class="icon">🚢</span> 上午</div>
+      <div class="section-title">泉州海外交通史博物馆</div>
+      <p>早起出发，打车前往泉州海外交通史博物馆（简称"海交馆"），这是国内唯一以海外交通史为主题的专题博物馆，免费开放，需提前在微信小程序"海丝旅游荟"预约。馆内最震撼的是后渚港出土的宋代海船——一艘 1974 年打捞上来的真实沉船，船体内还保留着香料、贝壳等出土文物，可以直观感受宋代海上贸易的繁盛。二楼的宗教石刻展馆收藏了大量伊斯兰教、印度教、基督教石刻，印证了泉州作为"世界宗教博物馆"的地位。小朋友对古船会很感兴趣，参观约 1-1.5 小时。可按需约馆内讲解。建议 8:30-9:00 到馆，给后面的非遗馆留足时间。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🎨</span> 上午</div>
+      <div class="section-title">泉州非遗馆</div>
+      <p>海交馆出来后打车前往非遗馆（约 10 分钟）。泉州非遗馆位于东湖街侨乡体育馆内，650 余件展品分四大展区，涵盖石雕、木偶头雕刻、花灯、南音、陶瓷烧制等闽南非遗精华。最大的亮点是 15 个非遗工坊和互动舞台——传承人亲自示范指导，可以亲手体验泉州剪纸、木偶头雕刻、花灯制作、妆糕人等手工项目，还能看提线木偶戏表演并和演员合影。这是整个行程中小朋友参与感最强的环节，建议预留 1.5-2 小时。可按需约馆内讲解。免费开放，需通过"泉州市文化馆泉州市非遗保护中心"公众号实名预约（一个手机号只能预约一人，夫妻需各自用不同手机号分别预约，小孩不用预约），部分工坊需单独线上预约。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🍽️</span> 午餐（待定）</div>
+      <p>两个馆逛完大约 12 点前后，在非遗馆或海交馆附近找一家馆子吃午饭，具体餐馆回头再定。也可以回到西街附近吃一顿告别餐，顺便给女儿买些泉州伴手礼：源和堂蜜饯、绿豆饼。</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="icon">🚄</span> 返程</div>
+      <p>午饭后打车前往泉州站，乘坐 <strong>D3308</strong>（15:34 发，18:28 到，约2小时54分）前往苍南——老公的老家。15:34 的车次时间比较宽裕，上午两个馆可以慢慢逛，午饭也不用赶。</p>
+      <div class="tip"><strong>10/4 返程杭州：</strong>苍南在老家待几天后，10月4日从平阳站乘 G7336（14:09 发，16:41 到）回杭州南。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Practical Info -->
+<div class="info-card" id="info">
+  <h2>📌 实用信息</h2>
+
+  <h3>🌤️ 天气与穿着</h3>
+  <p>9 月底平潭和泉州气温约 24-31°C，以晴天为主，是全年最舒适的时段。平潭海边风大，建议带一件薄外套。沙滩活动穿凉鞋或洞洞鞋，泉州古城穿舒适走路的运动鞋。防晒必备：帽子、防晒霜、墨镜。</p>
+
+  <h3>💰 费用预估（6天5晚，按2大1小估算）</h3>
+  <table class="cost-table">
+    <tr><th>项目</th><th>预估费用</th></tr>
+    <tr><td>高铁（4程）</td><td>1,857 元（儿童票减半）</td></tr>
+    <tr><td>住宿（5晚）</td><td>3,193 元</td></tr>
+    <tr><td>餐饮（6天）</td><td>约 2,500-3,500 元</td></tr>
+    <tr><td>当地交通</td><td>约 500-800 元</td></tr>
+    <tr><td>门票+体验</td><td>约 800-1,200 元</td></tr>
+    <tr><td><strong>合计</strong></td><td><strong>约 8,500-13,000 元</strong></td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">大部分景点免费开放，需购票/预约的有浮潜体验（约 268-288 元/人）、仙人井、木偶剧院和簪花体验。9月底处于暑期与国庆之间的价格洼地，性价比很高。</p>
+
+  <h3>🎒 必备物品清单</h3>
+  <ul class="checklist">
+    <li><strong>防晒类：</strong>防晒霜（SPF50+）、遮阳帽、墨镜、防晒衣</li>
+    <li><strong>沙滩类：</strong>小桶小铲子、贝壳收纳盒、沙滩鞋或洞洞鞋、速干浴巾</li>
+    <li><strong>浮潜/水上：</strong>泳衣（长袖款防晒）、手机防水袋、换洗内衣</li>
+    <li><strong>电子产品：</strong>充电宝</li>
+    <li><strong>药品：</strong>防蚊液、肠胃药、晕车药</li>
+    <li><strong>衣物：</strong>薄外套、2-3 套换洗衣服、浅色衣服（簪花拍照好看）</li>
+  </ul>
+
+  <h3>📝 预约清单（出发前逐项核对）</h3>
+  <div style="overflow-x:auto;">
+  <table class="reservation-table">
+    <thead>
+      <tr><th>景点/项目</th><th>所在天</th><th>预约方式</th><th>提前时间</th><th>备注</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>仙人井</td>
+        <td>9/26 周六上午</td>
+        <td>"平潭旅游"微信公众号</td>
+        <td>出发前1-2天</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>浮潜体验</td>
+        <td>9/27 周日上午</td>
+        <td>电话预约</td>
+        <td>出发前1-2天</td>
+        <td>需确认儿童年龄要求</td>
+      </tr>
+      <tr>
+        <td>提线木偶戏（中闽百汇）</td>
+        <td>9/28 周一晚上</td>
+        <td>大众点评购票+联系商家</td>
+        <td>提前3-5天</td>
+        <td>商家预约场次</td>
+      </tr>
+      <tr>
+        <td>泉州开元寺</td>
+        <td>9/29 周二上午</td>
+        <td>"泉州开元寺"微信公众号</td>
+        <td>出发前1-2天</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>泉州海交馆</td>
+        <td>9/30 周三上午</td>
+        <td>微信小程序"海丝旅游荟"</td>
+        <td>出发前1-2天</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>泉州非遗馆</td>
+        <td>9/30 周三上午</td>
+        <td>"泉州市文化馆泉州市非遗保护中心"公众号</td>
+        <td>出发前1-2天</td>
+        <td>一个手机号只能约一人，夫妻各自预约，小孩不用约；部分工坊需单独预约</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>🎫 订票提醒</h3>
+  <p>高铁票建议出发前 15 天（9 月上旬）开抢，9 月底临近国庆，热门线路可能会紧张。泉州提线木偶戏需提前在大众点评购票并联系商家预约场次，建议提前 3-5 天约好。</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>祝旅途愉快，和女儿一起收获美好的海岛记忆 <span class="heart">♥</span></p>
+</div>
+
+</div><!-- end content -->
+
+<script>
+// Nav dots
+const days = [
+  { id: 'top', label: '顶部' },
+  { id: 'overview', label: '总览' },
+  { id: 'day1', label: 'Day 1' },
+  { id: 'day2', label: 'Day 2' },
+  { id: 'day3', label: 'Day 3' },
+  { id: 'day4', label: 'Day 4' },
+  { id: 'day5', label: 'Day 5' },
+  { id: 'day6', label: 'Day 6' },
+  { id: 'info', label: '实用' }
+];
+
+const nav = document.getElementById('navDots');
+days.forEach(d => {
+  const dot = document.createElement('button');
+  dot.className = 'nav-dot';
+  dot.title = d.label;
+  dot.setAttribute('aria-label', d.label);
+  dot.addEventListener('click', () => {
+    document.getElementById(d.id).scrollIntoView({ behavior: 'smooth' });
+  });
+  nav.appendChild(dot);
+});
+
+// Highlight active dot on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = days.findIndex(d => d.id === entry.target.id);
+      if (idx >= 0) {
+        document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === idx);
+        });
+      }
+    }
+  });
+}, { threshold: 0.3 });
+
+days.forEach(d => {
+  const el = document.getElementById(d.id);
+  if (el) observer.observe(el);
+});
+</script>
+</body>
+</html>
