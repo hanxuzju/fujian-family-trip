@@ -149,31 +149,6 @@
     margin-left: auto;
     white-space: nowrap;
   }
-  .attr-header .speak-btn {
-    background: rgba(255,255,255,0.2);
-    border: none;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    flex-shrink: 0;
-    margin-left: 6px;
-  }
-  .attr-header .speak-btn:hover { background: rgba(255,255,255,0.35); }
-  .attr-header .speak-btn.speaking {
-    background: rgba(255,255,255,0.4);
-    animation: pulse 1.5s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
   .attr-body {
     padding: 16px 18px;
   }
@@ -194,6 +169,21 @@
     color: #166534;
   }
   .attr-body .knowledge strong { color: #14532d; }
+  .attr-body .video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #fe2c55, #ff6b81);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .attr-body .video-link:hover { opacity: 0.85; }
 
   /* Footer */
   .footer {
@@ -278,7 +268,6 @@
   <div class="attr-header">
     <span class="attr-icon">🏖️</span>
     <span class="attr-name">龙王头海滩</span>
-    <button class="speak-btn" data-target="longwangtou" title="点击朗读">🔊</button>
     <span class="attr-day">Day 1</span>
   </div>
   <div class="attr-body">
@@ -287,6 +276,7 @@
       <strong>🔬 你知道吗？</strong> 平潭岛的沙子主要来自海底的火山岩和花岗岩，经过海浪千万年的冲刷和打磨，变成了今天你看到的细腻沙滩。平潭是一个海岛县，由 1268 个小岛组成，是福建省第一大岛、中国第五大岛。因为岛屿多、海岸线长，所以海滩特别多。
     </div>
     <p>龙王头海滩面朝东海，海浪从远处涌过来，一层叠一层，特别适合踩浪玩。海滩上还可以捡到小贝壳和海螺，它们是被海浪冲上岸的。下次捡到贝壳的时候，可以观察一下它们的形状和花纹——每一个都是独一无二的"大海的作品"。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7672406386538845263" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -295,7 +285,6 @@
   <div class="attr-header">
     <span class="attr-icon">🕳️</span>
     <span class="attr-name">仙人井</span>
-    <button class="speak-btn" data-target="xianrenjing" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -304,6 +293,7 @@
       <strong>🔬 它是怎么形成的？</strong> 海浪日复一日地拍打悬崖，岩石中比较软的部分先被掏空，慢慢就形成了一个巨大的洞。当海浪冲进洞里，拍打岩壁，会发出"轰隆轰隆"的巨响，像打雷一样。这种地貌叫"海蚀地貌"，是海浪这位"雕刻家"花了几千年甚至上万年才完成的杰作。
     </div>
     <p>站在井口往下看，海水碧绿深邃，岩壁陡峭，仿佛通往海底的秘密通道。大自然的鬼斧神工，比任何人工建筑都让人惊叹。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7634107379341140691" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -311,7 +301,6 @@
   <div class="attr-header">
     <span class="attr-icon">🏘️</span>
     <span class="attr-name">北港文创村</span>
-    <button class="speak-btn" data-target="beigang" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -320,6 +309,7 @@
       <strong>🏠 为什么用石头盖房子？</strong> 以前的渔民没有砖头和水泥，就就地取材，从山上开采花岗岩，一块一块垒成了房子。石头墙又厚又结实，能挡住海上的大风。这些石头厝已经有上百年的历史了。
     </div>
     <p>现在，北港村变成了一个文创村。老石头厝被改造成了咖啡馆、手作工坊和小店，古老的房子焕发出了新的活力。村里还有一个石头厝博物馆，可以看到以前的渔民是怎么生活的——用什么做饭、怎么捕鱼、怎么在岛上过日子。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7673533906810170778" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -327,7 +317,6 @@
   <div class="attr-header">
     <span class="attr-icon">🌉</span>
     <span class="attr-name">北部湾生态廊道 F2 观景台</span>
-    <button class="speak-btn" data-target="f2" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -336,6 +325,7 @@
       <strong>🔬 玻璃栈道安全吗？</strong> 玻璃栈道很安全，每平方米能承受很大的重量，所以放心大胆地走上去吧！北部湾生态廊道是一条沿着海岸线修建的观光路，把平潭最美的海景串成了一条线。这条路曾获评全国"十大最美农村路"，一边是山，一边是海，风景美得像画一样。
     </div>
     <p>站在玻璃栈道上，可以同时看到三样东西：蓝色的大海、白色的风车阵、还有沿海蜿蜒的 S 弯公路。风从海上吹过来，带着咸咸的海水味道，闭上眼睛听，能听到海浪拍打岩石的声音。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7146144180056722703" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -343,7 +333,6 @@
   <div class="attr-header">
     <span class="attr-icon">🌀</span>
     <span class="attr-name">长江澳风车田</span>
-    <button class="speak-btn" data-target="changjiangao" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -352,6 +341,7 @@
       <strong>💡 风车有什么用？</strong> 那些巨大的风车可不是装饰品，它们是风力发电机，能把风变成电。每台风车有三片巨大的叶片，海风吹动叶片旋转，带动发电机运转，就产生了清洁的电能。一台大型风车的塔筒高度大约有 80 米，相当于 25 层楼那么高！叶片转一圈，就能产生足够的电供一个家庭用好几个小时。
     </div>
     <p>退潮的时候，风车下面的沙滩会露出来，可以踩水玩沙。涨潮的时候，海浪拍打风车基座，浪花飞溅，又是另一番壮观的景象。坐在沙滩上，看太阳一点点沉入海面，天空变成橘红色，这是平潭最治愈的时刻。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7447858072183115018" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -360,7 +350,6 @@
   <div class="attr-header">
     <span class="attr-icon">🤿</span>
     <span class="attr-name">浮潜体验</span>
-    <button class="speak-btn" data-target="fuqian" title="点击朗读">🔊</button>
     <span class="attr-day">Day 3</span>
   </div>
   <div class="attr-body">
@@ -369,6 +358,7 @@
       <strong>🔬 为什么戴上呼吸管就能在水下呼吸？</strong> 呼吸管是一根中空的管子，一头咬在嘴里，一头露出水面。当你趴在水面上时，通过管子就能呼吸到水面上的空气，同时脸可以一直埋在水里看风景。平潭的海水很清澈，水下有礁石、海藻和各种小鱼，就像在看一部海底纪录片——只不过这次你是主角。
     </div>
     <p>9 月底平潭的海水温度大约 28°C，和洗澡水差不多，非常舒服。浮潜的时候记得带上防水袋，用手机拍下海底的照片，这可是你在陆地看不到的风景。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7668700490653371648" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -376,7 +366,6 @@
   <div class="attr-header">
     <span class="attr-icon">🏝️</span>
     <span class="attr-name">坛南湾三澳</span>
-    <button class="speak-btn" data-target="tannanwan" title="点击朗读">🔊</button>
     <span class="attr-day">Day 3</span>
   </div>
   <div class="attr-body">
@@ -387,6 +376,7 @@
       <strong>🔬 黑色礁石是怎么来的？</strong> 这些黑色礁石是火山喷发时形成的玄武岩，年龄比恐龙还大！很久很久以前，海底火山喷发，熔岩冷却后就形成了这种黑色的石头。
     </div>
     <p><strong>崎沙澳</strong>是看日落的绝佳位置。沙滩开阔、前方没有遮挡，太阳会正正地沉入海面。日落的时候，天空的颜色会从金黄变成橘红，再变成紫红，像是大自然在变魔术。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7675709081608903269" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -395,7 +385,6 @@
   <div class="attr-header">
     <span class="attr-icon">🌸</span>
     <span class="attr-name">簪花围</span>
-    <button class="speak-btn" data-target="zanhua" title="点击朗读">🔊</button>
     <span class="attr-day">Day 4</span>
   </div>
   <div class="attr-body">
@@ -404,6 +393,7 @@
       <strong>🌺 为什么要簪花？</strong> 蟳埔村的男人出海打鱼，女人在家里操持一切。她们把最美的花戴在头上，既是对生活的热爱，也期盼出海的家人平安归来。鲜花会枯萎，但蟳埔女的簪花传统却千年不凋。2008 年，簪花围被列入国家级非物质文化遗产。
     </div>
     <p>现在不只是蟳埔女，来泉州的游客也可以体验簪花，戴上满头的鲜花，穿上传统服饰，在古街老厝前拍一组照片，做一天"蟳埔女"。你头上戴的每一朵花，都承载着一段千年的渔家故事。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7676764422987173154" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -411,7 +401,6 @@
   <div class="attr-header">
     <span class="attr-icon">🎭</span>
     <span class="attr-name">提线木偶戏</span>
-    <button class="speak-btn" data-target="muou" title="点击朗读">🔊</button>
     <span class="attr-day">Day 4</span>
   </div>
   <div class="attr-body">
@@ -420,6 +409,7 @@
       <strong>🎭 什么是提线木偶？</strong> 就是用线来控制木偶做动作。一个木偶身上通常系着 16 到 30 根线，多的甚至有 50 多根。演员用手指勾住不同的线，就能让木偶走路、跳舞、斟酒、写字，甚至翻跟头——比真人还灵活！木偶的头和手都是用木头雕刻的，画上脸谱，穿上戏服，一个个活灵活现。
     </div>
     <p>泉州提线木偶戏是国家级非物质文化遗产，在世界上也很有名。演员在幕后操纵线条，木偶在台前表演，配合着音乐和唱腔，就像一场微型的神仙大片。在中闽百汇看提线木偶，离演员很近，甚至还能互动体验，比在大剧场远远看着有意思多了。看完表演，你可能会想：那些线到底是怎么控制的？这就是提线木偶的魅力——越看越神奇。</p>
+    <a class="video-link" href="https://m.douyin.com/share/user/MS4wLjABAAAAYeiNMdFzxQRelLsaWv8YJSHrJEzpwnV4CxLogyUXRtLI0TFZHxA0W514Y2hGNyeK" target="_blank">🎬 抖音主页</a>
   </div>
 </div>
 
@@ -428,7 +418,6 @@
   <div class="attr-header">
     <span class="attr-icon">🛕</span>
     <span class="attr-name">开元寺</span>
-    <button class="speak-btn" data-target="kaiyuansi" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -438,6 +427,7 @@
       <strong>🔬 什么是"飞天"？</strong> 大雄宝殿的屋顶下藏着 24 尊"飞天乐伎"。"飞天"是佛教中会飞的天人，她们手持乐器，身姿飘逸，好像在天上飞翔。这些飞天不是画上去的，而是用木头雕刻出来的斗拱构件，既承重又美观，是古代建筑师的智慧结晶。
     </div>
     <p>寺里还有很多古老的榕树，树根盘根错节，树冠遮天蔽日。走在古寺里，听着鸟叫声和风铃声，感觉时间都慢了下来。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7632338917010730378" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -445,7 +435,6 @@
   <div class="attr-header">
     <span class="attr-icon">🏮</span>
     <span class="attr-name">西街</span>
-    <button class="speak-btn" data-target="xijie" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -454,6 +443,7 @@
       <strong>🏠 为什么叫"骑楼"？</strong> 因为二楼"骑"在一楼的走廊上面，就像二楼骑在一楼背上一样。这种建筑是从东南亚传过来的，适合南方炎热多雨的气候。
     </div>
     <p>西街是泉州的"美食一条街"。润饼菜是用薄饼皮包着各种菜丝和肉，像一个大号的春卷；海蛎煎是用新鲜海蛎和地瓜粉煎成的饼，外酥内嫩；花生汤是花生熬煮成软糯的甜汤，喝一口暖到心里。走在西街上，一边走一边吃，用味蕾感受泉州的味道——这就是最地道的泉州体验。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7631054728666961791" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -461,7 +451,6 @@
   <div class="attr-header">
     <span class="attr-icon">🏛️</span>
     <span class="attr-name">钟楼 + 中山路</span>
-    <button class="speak-btn" data-target="zhonglou" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -471,6 +460,7 @@
       <strong>🔬 为什么泉州有这么多南洋风格的建筑？</strong> 因为以前很多泉州人下南洋（东南亚）做生意，赚了钱就回家乡盖房子，把海外的建筑风格带了回来。这些骑楼就是他们"衣锦还乡"的证明。
     </div>
     <p>走在中山路上，抬头看看那些老建筑，想象一下一百年前，这里有多少故事在发生。</p>
+    <a class="video-link" href="https://www.douyin.com/zhuanti/7189662238351984701" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -478,7 +468,6 @@
   <div class="attr-header">
     <span class="attr-icon">⛩️</span>
     <span class="attr-name">通淮关岳庙</span>
-    <button class="speak-btn" data-target="guanyuemiao" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -488,6 +477,7 @@
       <strong>🎨 什么是"剪瓷雕"？</strong> 庙里最值得看的是屋顶上的"剪瓷雕"——用彩色的碎瓷片拼贴出的人物、花鸟和故事。这些瓷片来自打碎的碗碟，工匠们把它们剪成小块，再一片片拼成精美的图案，铺满整个屋脊。每一幅剪瓷雕都在讲一个故事——有的是三国典故，有的是神话传说。这是闽南建筑艺术的巅峰代表。
     </div>
     <p>庙里终年烟雾缭绕，求签许愿的人络绎不绝。这是泉州民间信仰的缩影——在这里，信仰不是高高在上的，而是融入日常生活的。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7591525443015613898" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -496,7 +486,6 @@
   <div class="attr-header">
     <span class="attr-icon">🚢</span>
     <span class="attr-name">泉州海外交通史博物馆</span>
-    <button class="speak-btn" data-target="haijiaoguan" title="点击朗读">🔊</button>
     <span class="attr-day">Day 6</span>
   </div>
   <div class="attr-body">
@@ -506,6 +495,7 @@
       <strong>🔬 宋代的泉州有多繁华？</strong> 宋代的泉州叫"刺桐港"，是当时世界上最繁忙的港口之一。来自阿拉伯、波斯、印度、东南亚的商船在这里停靠，带来了香料、珠宝、药材，带走了中国的丝绸、瓷器、茶叶。泉州就像一个"世界超市"，不同国家的人在这里做生意、生活、通婚。二楼的宗教石刻展馆更神奇——伊斯兰教、印度教、基督教的石刻居然同时出现在泉州，说明宋代的泉州是一个真正开放的国际化城市。
     </div>
     <p>这艘沉船就是宋代海上丝绸之路的"活证据"，站在它面前，仿佛能听到 700 年前港口的人声鼎沸。</p>
+    <a class="video-link" href="https://www.douyin.com/video/7516937047787113788" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -513,7 +503,6 @@
   <div class="attr-header">
     <span class="attr-icon">🎨</span>
     <span class="attr-name">泉州非遗馆</span>
-    <button class="speak-btn" data-target="feiyiguan" title="点击朗读">🔊</button>
     <span class="attr-day">Day 6</span>
   </div>
   <div class="attr-body">
@@ -522,6 +511,7 @@
     <div class="knowledge">
       <strong>✋ 最有趣的部分！</strong> 这里有 15 个非遗工坊和互动舞台，可以看到传承人现场演示手艺，还能亲手体验：泉州剪纸怎么用一把剪刀剪出复杂的花纹？木偶头怎么一刀一刀雕刻出表情？花灯怎么扎出漂亮的形状？妆糕人怎么用糯米捏出各种人物？这是整个行程中参与感最强的一个地方，看完展览再动手做一做，你会发现：原来这些"老手艺"这么酷。
     </div>
+    <a class="video-link" href="https://www.douyin.com/video/7632441550060510089" target="_blank">🎬 抖音视频</a>
   </div>
 </div>
 
@@ -533,252 +523,6 @@
   <p style="margin-top:8px;"><a href="index.html" style="color:var(--primary);text-decoration:none;">← 返回完整攻略</a></p>
 </div>
 
-<script>
-(function() {
-  'use strict';
-  var synth = window.speechSynthesis;
-  var currentBtn = null;
-  var zhVoice = null;
-  var voicesLoaded = false;
-  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-  // Check basic support
-  if (!('speechSynthesis' in window)) {
-    showNoSupportNotice();
-    return;
-  }
-
-  function showNoSupportNotice() {
-    var btns = document.querySelectorAll('.speak-btn');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].style.display = 'none';
-    }
-    var notice = document.createElement('div');
-    notice.style.cssText = 'background:#fef2f2;color:#991b1b;padding:12px 16px;border-radius:10px;margin:16px 0;font-size:13px;text-align:center;line-height:1.6;';
-    notice.innerHTML = '⚠️ 当前浏览器不支持语音朗读功能。<br>请使用 <b>Chrome</b> 或 <b>Safari</b> 浏览器打开此页面。';
-    var toc = document.querySelector('.toc');
-    if (toc) toc.parentNode.insertBefore(notice, toc.nextSibling);
-  }
-
-  // Voice scoring: higher score = more natural/preferred
-  function scoreVoice(v) {
-    var score = 0;
-    var name = v.name.toLowerCase();
-    var lang = v.lang.toLowerCase();
-
-    // Must be Chinese
-    if (lang.indexOf('zh') === -1) return -1000;
-
-    // Strongly prefer these high-quality natural voices
-    if (name.indexOf('xiaoxiao') !== -1) score += 100; // Microsoft Xiaoxiao - very natural young female
-    if (name.indexOf('xiaoyi') !== -1) score += 90;   // Microsoft Xiaoyi - natural young female
-    if (name.indexOf('xiaochen') !== -1) score += 85;
-    if (name.indexOf('xiaomo') !== -1) score += 85;
-    if (name.indexOf('xiaoshuang') !== -1) score += 80; // child voice
-    if (name.indexOf('yunxi') !== -1) score += 70;
-    if (name.indexOf('yunyang') !== -1) score += 70;
-
-    // Prefer known good voices
-    if (name.indexOf('google') !== -1 && name.indexOf('普通话') !== -1) score += 60;
-    if (name.indexOf('ting-ting') !== -1) score += 50; // Apple's Chinese voice
-    if (name.indexOf('natural') !== -1 || name.indexOf('hd') !== -1) score += 40;
-    if (name.indexOf('female') !== -1 || name.indexOf('女') !== -1) score += 30;
-
-    // Prefer zh-CN over zh-TW/zh-HK
-    if (lang === 'zh-cn') score += 20;
-
-    // Prefer local voices (not network-only)
-    if (v.localService) score += 10;
-
-    return score;
-  }
-
-  function loadVoices() {
-    var voices = synth.getVoices();
-    if (voices.length > 0) {
-      voicesLoaded = true;
-      // Score all voices and pick the best one
-      var scored = voices.map(function(v) { return { voice: v, score: scoreVoice(v) }; });
-      scored.sort(function(a, b) { return b.score - a.score; });
-
-      var best = scored[0];
-      if (best && best.score > -1000) {
-        zhVoice = best.voice;
-        console.log('[TTS] Best voice:', zhVoice.name, '(score:', best.score, ')');
-        // Log top 3 for debugging
-        for (var i = 0; i < Math.min(3, scored.length); i++) {
-          if (scored[i].score > -1000) {
-            console.log('[TTS]   #' + (i+1) + ':', scored[i].voice.name, '- score:', scored[i].score);
-          }
-        }
-      } else {
-        zhVoice = null;
-        console.warn('[TTS] No Chinese voice found! Available voices:', voices.length);
-      }
-    }
-  }
-
-  // Try immediately
-  loadVoices();
-
-  // Listen for voices changed event
-  if (synth.onvoiceschanged !== undefined) {
-    synth.onvoiceschanged = loadVoices;
-  }
-
-  // Retry loading voices for up to 3 seconds
-  var retryCount = 0;
-  var retryTimer = setInterval(function() {
-    retryCount++;
-    loadVoices();
-    if (voicesLoaded || retryCount >= 30) {
-      clearInterval(retryTimer);
-      if (!voicesLoaded) {
-        console.warn('[TTS] Voices failed to load after 3s');
-      }
-    }
-  }, 100);
-
-  function extractText(card) {
-    var body = card.querySelector('.attr-body');
-    if (!body) return '';
-    var nameEl = card.querySelector('.attr-name');
-    var name = nameEl ? nameEl.textContent.trim() : '';
-    var parts = [];
-    if (name) parts.push(name);
-    var els = body.querySelectorAll('p, .knowledge');
-    for (var i = 0; i < els.length; i++) {
-      var text = els[i].textContent.trim();
-      if (text) parts.push(text);
-    }
-    return parts.join('，');
-  }
-
-  function resetBtn(btn) {
-    if (btn) {
-      btn.classList.remove('speaking');
-      btn.textContent = '🔊';
-    }
-  }
-
-  function stopSpeaking() {
-    try {
-      if (synth.speaking || synth.pending) {
-        synth.cancel();
-      }
-    } catch(e) {
-      console.warn('[TTS] Cancel error:', e);
-    }
-    resetBtn(currentBtn);
-    currentBtn = null;
-  }
-
-  function startSpeaking(btn, card) {
-    // If clicking the same button, toggle off
-    if (currentBtn === btn) {
-      stopSpeaking();
-      return;
-    }
-    // Stop any current speech
-    stopSpeaking();
-
-    var text = extractText(card);
-    if (!text) {
-      console.warn('[TTS] No text extracted');
-      return;
-    }
-
-    console.log('[TTS] Starting speech, text length:', text.length, 'mobile:', isMobile);
-
-    var utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'zh-CN';
-    utterance.rate = 1.0;    // Normal speed for clarity
-    utterance.pitch = 1.3;   // Higher pitch for younger, more feminine voice
-    utterance.volume = 1.0;
-    if (zhVoice) {
-      utterance.voice = zhVoice;
-      console.log('[TTS] Using voice:', zhVoice.name);
-    } else {
-      console.log('[TTS] No zh voice selected, using default');
-    }
-
-    btn.classList.add('speaking');
-    btn.textContent = '⏸';
-    currentBtn = btn;
-
-    utterance.onend = function() {
-      console.log('[TTS] Speech ended');
-      resetBtn(btn);
-      if (currentBtn === btn) currentBtn = null;
-    };
-    utterance.onerror = function(e) {
-      console.warn('[TTS] Speech error:', e.error, e);
-      resetBtn(btn);
-      if (currentBtn === btn) currentBtn = null;
-
-      if (e.error === 'not-allowed') {
-        alert('语音播放被浏览器阻止了，请检查浏览器设置是否允许自动播放音频。');
-      } else if (isMobile) {
-        alert('手机端语音朗读兼容性有限，建议使用 Chrome 或 Safari 浏览器打开此页面获得最佳体验。\n\n如果已使用 Chrome/Safari 仍无法播放，可能是手机系统未安装中文语音包。');
-      }
-    };
-
-    try {
-      synth.speak(utterance);
-      console.log('[TTS] speak() called successfully');
-
-      // Mobile workaround: check if speech actually started
-      if (isMobile) {
-        setTimeout(function() {
-          if (!synth.speaking && !synth.pending) {
-            console.warn('[TTS] Speech not started on mobile, may not be supported');
-            resetBtn(btn);
-            if (currentBtn === btn) currentBtn = null;
-            alert('当前手机浏览器可能不支持语音朗读。\n\n建议：\n1. 使用 Chrome 或 Safari 浏览器\nn2. 在手机"设置 → 辅助功能 → 文字转语音"中安装中文语音包');
-          }
-        }, 1000);
-      }
-    } catch(e) {
-      console.error('[TTS] speak() threw error:', e);
-      resetBtn(btn);
-      currentBtn = null;
-      if (isMobile) {
-        alert('语音播放失败。手机端浏览器兼容性有限，建议使用 Chrome 或 Safari 浏览器。');
-      } else {
-        alert('语音播放失败：' + e.message);
-      }
-    }
-  }
-
-  // Attach click handlers
-  var buttons = document.querySelectorAll('.speak-btn');
-  console.log('[TTS] Found', buttons.length, 'speaker buttons');
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var targetId = this.getAttribute('data-target');
-      var card = document.getElementById(targetId);
-      if (!card) {
-        console.warn('[TTS] Card not found:', targetId);
-        return;
-      }
-      console.log('[TTS] Button clicked for:', targetId);
-      startSpeaking(this, card);
-    });
-  }
-
-  // Chrome workaround: prevent long speech from pausing
-  setInterval(function() {
-    if (synth.speaking && !synth.paused) {
-      synth.pause();
-      synth.resume();
-    }
-  }, 10000);
-
-  console.log('[TTS] Initialized. speechSynthesis available:', !!synth, 'Mobile:', isMobile);
-})();
-</script>
 
 </body>
 </html>
