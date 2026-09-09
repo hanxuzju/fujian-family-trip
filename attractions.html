@@ -535,31 +535,67 @@
 
 <script>
 (function() {
+  'use strict';
   var synth = window.speechSynthesis;
   var currentBtn = null;
-  var currentUtterance = null;
-
-  // Try to find a Chinese voice
   var zhVoice = null;
-  function pickVoice() {
+  var voicesLoaded = false;
+
+  // Check basic support
+  if (!('speechSynthesis' in window)) {
+    // No TTS support - add a notice
+    var btns = document.querySelectorAll('.speak-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].style.display = 'none';
+    }
+    var notice = document.createElement('div');
+    notice.style.cssText = 'background:#fef2f2;color:#991b1b;padding:12px 16px;border-radius:10px;margin:16px 0;font-size:13px;text-align:center;';
+    notice.innerHTML = '⚠️ 当前浏览器不支持语音朗读功能。请使用 Chrome、Safari 或 Edge 浏览器打开此页面。';
+    var toc = document.querySelector('.toc');
+    if (toc) toc.parentNode.insertBefore(notice, toc.nextSibling);
+    return;
+  }
+
+  // Load voices with retry
+  function loadVoices() {
     var voices = synth.getVoices();
-    // Prefer zh-CN female voices
-    zhVoice = voices.find(function(v) { return v.lang === 'zh-CN' && /female|女/i.test(v.name); })
-      || voices.find(function(v) { return v.lang === 'zh-CN'; })
-      || voices.find(function(v) { return v.lang.indexOf('zh') === 0; })
-      || null;
+    if (voices.length > 0) {
+      voicesLoaded = true;
+      // Prefer zh-CN voices
+      zhVoice = voices.find(function(v) { return v.lang === 'zh-CN' && /female|女/i.test(v.name); })
+        || voices.find(function(v) { return v.lang === 'zh-CN'; })
+        || voices.find(function(v) { return v.lang.indexOf('zh') === 0; })
+        || null;
+      console.log('[TTS] Voices loaded:', voices.length, 'Selected:', zhVoice ? zhVoice.name : 'default');
+    }
   }
+
+  // Try immediately
+  loadVoices();
+
+  // Listen for voices changed event
   if (synth.onvoiceschanged !== undefined) {
-    synth.onvoiceschanged = pickVoice;
+    synth.onvoiceschanged = loadVoices;
   }
-  pickVoice();
+
+  // Retry loading voices for up to 3 seconds
+  var retryCount = 0;
+  var retryTimer = setInterval(function() {
+    retryCount++;
+    loadVoices();
+    if (voicesLoaded || retryCount >= 30) {
+      clearInterval(retryTimer);
+      if (!voicesLoaded) {
+        console.warn('[TTS] Voices failed to load after 3s, will use default');
+      }
+    }
+  }, 100);
 
   function extractText(card) {
     var body = card.querySelector('.attr-body');
     if (!body) return '';
     var nameEl = card.querySelector('.attr-name');
-    var name = nameEl ? nameEl.textContent : '';
-    // Collect text from paragraphs and knowledge boxes
+    var name = nameEl ? nameEl.textContent.trim() : '';
     var parts = [];
     if (name) parts.push(name);
     var els = body.querySelectorAll('p, .knowledge');
@@ -567,23 +603,30 @@
       var text = els[i].textContent.trim();
       if (text) parts.push(text);
     }
-    return parts.join('。');
+    return parts.join('，');
+  }
+
+  function resetBtn(btn) {
+    if (btn) {
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊';
+    }
   }
 
   function stopSpeaking() {
-    if (synth.speaking || synth.pending) {
-      synth.cancel();
+    try {
+      if (synth.speaking || synth.pending) {
+        synth.cancel();
+      }
+    } catch(e) {
+      console.warn('[TTS] Cancel error:', e);
     }
-    if (currentBtn) {
-      currentBtn.classList.remove('speaking');
-      currentBtn.textContent = '🔊';
-      currentBtn = null;
-    }
-    currentUtterance = null;
+    resetBtn(currentBtn);
+    currentBtn = null;
   }
 
   function startSpeaking(btn, card) {
-    // If clicking the same button that's already speaking, stop it
+    // If clicking the same button, toggle off
     if (currentBtn === btn) {
       stopSpeaking();
       return;
@@ -592,61 +635,81 @@
     stopSpeaking();
 
     var text = extractText(card);
-    if (!text) return;
+    if (!text) {
+      console.warn('[TTS] No text extracted');
+      return;
+    }
+
+    console.log('[TTS] Starting speech, text length:', text.length);
 
     var utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'zh-CN';
     utterance.rate = 0.9;
     utterance.pitch = 1.1;
-    if (zhVoice) utterance.voice = zhVoice;
+    utterance.volume = 1.0;
+    if (zhVoice) {
+      utterance.voice = zhVoice;
+      console.log('[TTS] Using voice:', zhVoice.name);
+    } else {
+      console.log('[TTS] No zh voice selected, using default');
+    }
 
     btn.classList.add('speaking');
     btn.textContent = '⏸';
     currentBtn = btn;
-    currentUtterance = utterance;
 
     utterance.onend = function() {
-      btn.classList.remove('speaking');
-      btn.textContent = '🔊';
-      currentBtn = null;
-      currentUtterance = null;
+      console.log('[TTS] Speech ended');
+      resetBtn(btn);
+      if (currentBtn === btn) currentBtn = null;
     };
-    utterance.onerror = function() {
-      btn.classList.remove('speaking');
-      btn.textContent = '🔊';
-      currentBtn = null;
-      currentUtterance = null;
+    utterance.onerror = function(e) {
+      console.warn('[TTS] Speech error:', e.error, e);
+      resetBtn(btn);
+      if (currentBtn === btn) currentBtn = null;
+      if (e.error === 'not-allowed') {
+        alert('语音播放被浏览器阻止了，请检查浏览器设置是否允许自动播放音频。');
+      }
     };
 
-    synth.speak(utterance);
+    try {
+      synth.speak(utterance);
+      console.log('[TTS] speak() called successfully');
+    } catch(e) {
+      console.error('[TTS] speak() threw error:', e);
+      resetBtn(btn);
+      currentBtn = null;
+      alert('语音播放失败：' + e.message);
+    }
   }
 
   // Attach click handlers
   var buttons = document.querySelectorAll('.speak-btn');
+  console.log('[TTS] Found', buttons.length, 'speaker buttons');
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       var targetId = this.getAttribute('data-target');
       var card = document.getElementById(targetId);
-      if (!card) return;
-
-      // Check if browser supports TTS
-      if (!('speechSynthesis' in window)) {
-        alert('当前浏览器不支持语音朗读功能，请尝试使用 Chrome、Safari 或 Edge 浏览器。');
+      if (!card) {
+        console.warn('[TTS] Card not found:', targetId);
         return;
       }
-
+      console.log('[TTS] Button clicked for:', targetId);
       startSpeaking(this, card);
     });
   }
 
-  // Workaround: Chrome pauses speech after ~15 seconds, keep it alive
+  // Chrome workaround: prevent long speech from pausing
   setInterval(function() {
     if (synth.speaking && !synth.paused) {
       synth.pause();
       synth.resume();
     }
   }, 10000);
+
+  console.log('[TTS] Initialized. speechSynthesis available:', !!synth);
 })();
 </script>
 
