@@ -149,6 +149,31 @@
     margin-left: auto;
     white-space: nowrap;
   }
+  .attr-header .speak-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    margin-left: 6px;
+  }
+  .attr-header .speak-btn:hover { background: rgba(255,255,255,0.35); }
+  .attr-header .speak-btn.speaking {
+    background: rgba(255,255,255,0.4);
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
   .attr-body {
     padding: 16px 18px;
   }
@@ -253,6 +278,7 @@
   <div class="attr-header">
     <span class="attr-icon">🏖️</span>
     <span class="attr-name">龙王头海滩</span>
+    <button class="speak-btn" data-target="longwangtou" title="点击朗读">🔊</button>
     <span class="attr-day">Day 1</span>
   </div>
   <div class="attr-body">
@@ -269,6 +295,7 @@
   <div class="attr-header">
     <span class="attr-icon">🕳️</span>
     <span class="attr-name">仙人井</span>
+    <button class="speak-btn" data-target="xianrenjing" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -284,6 +311,7 @@
   <div class="attr-header">
     <span class="attr-icon">🏘️</span>
     <span class="attr-name">北港文创村</span>
+    <button class="speak-btn" data-target="beigang" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -299,6 +327,7 @@
   <div class="attr-header">
     <span class="attr-icon">🌉</span>
     <span class="attr-name">北部湾生态廊道 F2 观景台</span>
+    <button class="speak-btn" data-target="f2" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -314,6 +343,7 @@
   <div class="attr-header">
     <span class="attr-icon">🌀</span>
     <span class="attr-name">长江澳风车田</span>
+    <button class="speak-btn" data-target="changjiangao" title="点击朗读">🔊</button>
     <span class="attr-day">Day 2</span>
   </div>
   <div class="attr-body">
@@ -330,6 +360,7 @@
   <div class="attr-header">
     <span class="attr-icon">🤿</span>
     <span class="attr-name">浮潜体验</span>
+    <button class="speak-btn" data-target="fuqian" title="点击朗读">🔊</button>
     <span class="attr-day">Day 3</span>
   </div>
   <div class="attr-body">
@@ -345,6 +376,7 @@
   <div class="attr-header">
     <span class="attr-icon">🏝️</span>
     <span class="attr-name">坛南湾三澳</span>
+    <button class="speak-btn" data-target="tannanwan" title="点击朗读">🔊</button>
     <span class="attr-day">Day 3</span>
   </div>
   <div class="attr-body">
@@ -363,6 +395,7 @@
   <div class="attr-header">
     <span class="attr-icon">🌸</span>
     <span class="attr-name">簪花围</span>
+    <button class="speak-btn" data-target="zanhua" title="点击朗读">🔊</button>
     <span class="attr-day">Day 4</span>
   </div>
   <div class="attr-body">
@@ -378,6 +411,7 @@
   <div class="attr-header">
     <span class="attr-icon">🎭</span>
     <span class="attr-name">提线木偶戏</span>
+    <button class="speak-btn" data-target="muou" title="点击朗读">🔊</button>
     <span class="attr-day">Day 4</span>
   </div>
   <div class="attr-body">
@@ -394,6 +428,7 @@
   <div class="attr-header">
     <span class="attr-icon">🛕</span>
     <span class="attr-name">开元寺</span>
+    <button class="speak-btn" data-target="kaiyuansi" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -410,6 +445,7 @@
   <div class="attr-header">
     <span class="attr-icon">🏮</span>
     <span class="attr-name">西街</span>
+    <button class="speak-btn" data-target="xijie" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -425,6 +461,7 @@
   <div class="attr-header">
     <span class="attr-icon">🏛️</span>
     <span class="attr-name">钟楼 + 中山路</span>
+    <button class="speak-btn" data-target="zhonglou" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -441,6 +478,7 @@
   <div class="attr-header">
     <span class="attr-icon">⛩️</span>
     <span class="attr-name">通淮关岳庙</span>
+    <button class="speak-btn" data-target="guanyuemiao" title="点击朗读">🔊</button>
     <span class="attr-day">Day 5</span>
   </div>
   <div class="attr-body">
@@ -458,6 +496,7 @@
   <div class="attr-header">
     <span class="attr-icon">🚢</span>
     <span class="attr-name">泉州海外交通史博物馆</span>
+    <button class="speak-btn" data-target="haijiaoguan" title="点击朗读">🔊</button>
     <span class="attr-day">Day 6</span>
   </div>
   <div class="attr-body">
@@ -474,6 +513,7 @@
   <div class="attr-header">
     <span class="attr-icon">🎨</span>
     <span class="attr-name">泉州非遗馆</span>
+    <button class="speak-btn" data-target="feiyiguan" title="点击朗读">🔊</button>
     <span class="attr-day">Day 6</span>
   </div>
   <div class="attr-body">
@@ -492,6 +532,123 @@
   <p>用 <span class="heart">❤</span> 为小朋友准备的旅行小手册</p>
   <p style="margin-top:8px;"><a href="index.html" style="color:var(--primary);text-decoration:none;">← 返回完整攻略</a></p>
 </div>
+
+<script>
+(function() {
+  var synth = window.speechSynthesis;
+  var currentBtn = null;
+  var currentUtterance = null;
+
+  // Try to find a Chinese voice
+  var zhVoice = null;
+  function pickVoice() {
+    var voices = synth.getVoices();
+    // Prefer zh-CN female voices
+    zhVoice = voices.find(function(v) { return v.lang === 'zh-CN' && /female|女/i.test(v.name); })
+      || voices.find(function(v) { return v.lang === 'zh-CN'; })
+      || voices.find(function(v) { return v.lang.indexOf('zh') === 0; })
+      || null;
+  }
+  if (synth.onvoiceschanged !== undefined) {
+    synth.onvoiceschanged = pickVoice;
+  }
+  pickVoice();
+
+  function extractText(card) {
+    var body = card.querySelector('.attr-body');
+    if (!body) return '';
+    var nameEl = card.querySelector('.attr-name');
+    var name = nameEl ? nameEl.textContent : '';
+    // Collect text from paragraphs and knowledge boxes
+    var parts = [];
+    if (name) parts.push(name);
+    var els = body.querySelectorAll('p, .knowledge');
+    for (var i = 0; i < els.length; i++) {
+      var text = els[i].textContent.trim();
+      if (text) parts.push(text);
+    }
+    return parts.join('。');
+  }
+
+  function stopSpeaking() {
+    if (synth.speaking || synth.pending) {
+      synth.cancel();
+    }
+    if (currentBtn) {
+      currentBtn.classList.remove('speaking');
+      currentBtn.textContent = '🔊';
+      currentBtn = null;
+    }
+    currentUtterance = null;
+  }
+
+  function startSpeaking(btn, card) {
+    // If clicking the same button that's already speaking, stop it
+    if (currentBtn === btn) {
+      stopSpeaking();
+      return;
+    }
+    // Stop any current speech
+    stopSpeaking();
+
+    var text = extractText(card);
+    if (!text) return;
+
+    var utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'zh-CN';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.1;
+    if (zhVoice) utterance.voice = zhVoice;
+
+    btn.classList.add('speaking');
+    btn.textContent = '⏸';
+    currentBtn = btn;
+    currentUtterance = utterance;
+
+    utterance.onend = function() {
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊';
+      currentBtn = null;
+      currentUtterance = null;
+    };
+    utterance.onerror = function() {
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊';
+      currentBtn = null;
+      currentUtterance = null;
+    };
+
+    synth.speak(utterance);
+  }
+
+  // Attach click handlers
+  var buttons = document.querySelectorAll('.speak-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('data-target');
+      var card = document.getElementById(targetId);
+      if (!card) return;
+
+      // Check if browser supports TTS
+      if (!('speechSynthesis' in window)) {
+        alert('当前浏览器不支持语音朗读功能，请尝试使用 Chrome、Safari 或 Edge 浏览器。');
+        return;
+      }
+
+      startSpeaking(this, card);
+    });
+  }
+
+  // Workaround: Chrome pauses speech after ~15 seconds, keep it alive
+  setInterval(function() {
+    if (synth.speaking && !synth.paused) {
+      synth.pause();
+      synth.resume();
+    }
+  }, 10000);
+})();
+</script>
 
 </body>
 </html>
