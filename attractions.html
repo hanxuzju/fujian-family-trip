@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>福建亲子游 · 景点介绍</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --accent: #f59e0b;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --tip-bg: #fffbeb;
+    --tip-border: #fbbf24;
+    --success: #10b981;
+    --tag-bg: #eff6ff;
+    --tag-text: #2563eb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+    color: white;
+    padding: 28px 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -10%;
+    width: 120%;
+    height: 60px;
+    background: var(--bg);
+    border-radius: 50% 50% 0 0;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .header-meta {
+    font-size: 13px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+  .back-link:hover { opacity: 1; }
+
+  /* Content */
+  .content {
+    padding: 0 16px 40px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--card);
+    border-radius: 14px;
+    margin: 16px 0;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .toc h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .toc-day {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 12px 0 6px;
+    letter-spacing: 0.5px;
+  }
+  .toc-day:first-of-type { margin-top: 0; }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+  }
+  .toc-list li {
+    padding: 4px 0;
+    font-size: 14px;
+  }
+  .toc-list a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--border);
+    transition: color 0.2s;
+  }
+  .toc-list a:hover { color: var(--primary); }
+
+  /* Attraction Card */
+  .attr-card {
+    background: var(--card);
+    border-radius: 14px;
+    margin: 16px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+    scroll-margin-top: 16px;
+  }
+  .attr-header {
+    background: linear-gradient(135deg, #059669, #10b981);
+    color: white;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .attr-header .attr-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .attr-header .attr-name {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .attr-header .attr-day {
+    font-size: 12px;
+    opacity: 0.85;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .attr-body {
+    padding: 16px 18px;
+  }
+  .attr-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.8;
+  }
+  .attr-body p:last-child { margin-bottom: 0; }
+  .attr-body .knowledge {
+    background: #f0fdf4;
+    border-left: 3px solid #22c55e;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #166534;
+  }
+  .attr-body .knowledge strong { color: #14532d; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px 16px 40px;
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  .footer .heart { color: #ef4444; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 0; height: 0; }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    body { font-size: 16px; }
+    .header { padding: 36px 24px 30px; }
+    .header h1 { font-size: 26px; }
+    .content { padding: 0 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <a href="index.html" class="back-link">← 返回攻略</a>
+  <h1>📖 景点介绍</h1>
+  <div class="header-meta">
+    <span>给小朋友的导游小手册——每到一个地方，先读一读，玩得更明白！</span>
+  </div>
+</header>
+
+<div class="content">
+
+<!-- TOC -->
+<div class="toc">
+  <h2>🗺️ 景点目录</h2>
+
+  <div class="toc-day">Day 1 · 奔赴海岛</div>
+  <ul class="toc-list">
+    <li><a href="#longwangtou">🏖️ 龙王头海滩</a></li>
+  </ul>
+
+  <div class="toc-day">Day 2 · 平潭北线环岛</div>
+  <ul class="toc-list">
+    <li><a href="#xianrenjing">🕳️ 仙人井</a></li>
+    <li><a href="#beigang">🏘️ 北港文创村</a></li>
+    <li><a href="#f2">🌉 北部湾生态廊道 F2 观景台</a></li>
+    <li><a href="#changjiangao">🌀 长江澳风车田</a></li>
+  </ul>
+
+  <div class="toc-day">Day 3 · 平潭南线</div>
+  <ul class="toc-list">
+    <li><a href="#fuqian">🤿 浮潜体验</a></li>
+    <li><a href="#tannanwan">🏝️ 坛南湾三澳</a></li>
+  </ul>
+
+  <div class="toc-day">Day 4 · 转战泉州</div>
+  <ul class="toc-list">
+    <li><a href="#zanhua">🌸 簪花围</a></li>
+    <li><a href="#muou">🎭 提线木偶戏</a></li>
+  </ul>
+
+  <div class="toc-day">Day 5 · 古城漫步</div>
+  <ul class="toc-list">
+    <li><a href="#kaiyuansi">🛕 开元寺</a></li>
+    <li><a href="#xijie">🏮 西街</a></li>
+    <li><a href="#zhonglou">🏛️ 钟楼 + 中山路</a></li>
+    <li><a href="#guanyuemiao">⛩️ 通淮关岳庙</a></li>
+  </ul>
+
+  <div class="toc-day">Day 6 · 告别与归途</div>
+  <ul class="toc-list">
+    <li><a href="#haijiaoguan">🚢 泉州海外交通史博物馆</a></li>
+    <li><a href="#feiyiguan">🎨 泉州非遗馆</a></li>
+  </ul>
+</div>
+
+<!-- Day 1 -->
+<div class="attr-card" id="longwangtou">
+  <div class="attr-header">
+    <span class="attr-icon">🏖️</span>
+    <span class="attr-name">龙王头海滩</span>
+    <span class="attr-day">Day 1</span>
+  </div>
+  <div class="attr-body">
+    <p>龙王头海滩是平潭岛最大的公共海滩，沙子细细的、软软的，踩上去像踩在面粉上一样舒服。</p>
+    <div class="knowledge">
+      <strong>🔬 你知道吗？</strong> 平潭岛的沙子主要来自海底的火山岩和花岗岩，经过海浪千万年的冲刷和打磨，变成了今天你看到的细腻沙滩。平潭是一个海岛县，由 1268 个小岛组成，是福建省第一大岛、中国第五大岛。因为岛屿多、海岸线长，所以海滩特别多。
+    </div>
+    <p>龙王头海滩面朝东海，海浪从远处涌过来，一层叠一层，特别适合踩浪玩。海滩上还可以捡到小贝壳和海螺，它们是被海浪冲上岸的。下次捡到贝壳的时候，可以观察一下它们的形状和花纹——每一个都是独一无二的"大海的作品"。</p>
+  </div>
+</div>
+
+<!-- Day 2 -->
+<div class="attr-card" id="xianrenjing">
+  <div class="attr-header">
+    <span class="attr-icon">🕳️</span>
+    <span class="attr-name">仙人井</span>
+    <span class="attr-day">Day 2</span>
+  </div>
+  <div class="attr-body">
+    <p>仙人井是一个天然的海蚀洞穴，名字里的"仙"字，说明它像是神仙住过的地方。</p>
+    <div class="knowledge">
+      <strong>🔬 它是怎么形成的？</strong> 海浪日复一日地拍打悬崖，岩石中比较软的部分先被掏空，慢慢就形成了一个巨大的洞。当海浪冲进洞里，拍打岩壁，会发出"轰隆轰隆"的巨响，像打雷一样。这种地貌叫"海蚀地貌"，是海浪这位"雕刻家"花了几千年甚至上万年才完成的杰作。
+    </div>
+    <p>站在井口往下看，海水碧绿深邃，岩壁陡峭，仿佛通往海底的秘密通道。大自然的鬼斧神工，比任何人工建筑都让人惊叹。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="beigang">
+  <div class="attr-header">
+    <span class="attr-icon">🏘️</span>
+    <span class="attr-name">北港文创村</span>
+    <span class="attr-day">Day 2</span>
+  </div>
+  <div class="attr-body">
+    <p>北港村是一个用石头建成的村子，房子、围墙、小路，全都是花岗岩做的，所以叫"石头厝（cuò）"。"厝"在闽南话里就是"房子"的意思。</p>
+    <div class="knowledge">
+      <strong>🏠 为什么用石头盖房子？</strong> 以前的渔民没有砖头和水泥，就就地取材，从山上开采花岗岩，一块一块垒成了房子。石头墙又厚又结实，能挡住海上的大风。这些石头厝已经有上百年的历史了。
+    </div>
+    <p>现在，北港村变成了一个文创村。老石头厝被改造成了咖啡馆、手作工坊和小店，古老的房子焕发出了新的活力。村里还有一个石头厝博物馆，可以看到以前的渔民是怎么生活的——用什么做饭、怎么捕鱼、怎么在岛上过日子。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="f2">
+  <div class="attr-header">
+    <span class="attr-icon">🌉</span>
+    <span class="attr-name">北部湾生态廊道 F2 观景台</span>
+    <span class="attr-day">Day 2</span>
+  </div>
+  <div class="attr-body">
+    <p>F2 观景台最刺激的部分是一段 45 米长的玻璃栈道——脚下是透明的玻璃，往下看就是悬崖和大海，是不是有点腿软？</p>
+    <div class="knowledge">
+      <strong>🔬 玻璃栈道安全吗？</strong> 玻璃栈道很安全，每平方米能承受很大的重量，所以放心大胆地走上去吧！北部湾生态廊道是一条沿着海岸线修建的观光路，把平潭最美的海景串成了一条线。这条路曾获评全国"十大最美农村路"，一边是山，一边是海，风景美得像画一样。
+    </div>
+    <p>站在玻璃栈道上，可以同时看到三样东西：蓝色的大海、白色的风车阵、还有沿海蜿蜒的 S 弯公路。风从海上吹过来，带着咸咸的海水味道，闭上眼睛听，能听到海浪拍打岩石的声音。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="changjiangao">
+  <div class="attr-header">
+    <span class="attr-icon">🌀</span>
+    <span class="attr-name">长江澳风车田</span>
+    <span class="attr-day">Day 2</span>
+  </div>
+  <div class="attr-body">
+    <p>长江澳风车田是平潭看日落的最佳地点。夕阳西下的时候，金色的阳光洒在白色风车和沙滩上，美得像一幅油画。</p>
+    <div class="knowledge">
+      <strong>💡 风车有什么用？</strong> 那些巨大的风车可不是装饰品，它们是风力发电机，能把风变成电。每台风车有三片巨大的叶片，海风吹动叶片旋转，带动发电机运转，就产生了清洁的电能。一台大型风车的塔筒高度大约有 80 米，相当于 25 层楼那么高！叶片转一圈，就能产生足够的电供一个家庭用好几个小时。
+    </div>
+    <p>退潮的时候，风车下面的沙滩会露出来，可以踩水玩沙。涨潮的时候，海浪拍打风车基座，浪花飞溅，又是另一番壮观的景象。坐在沙滩上，看太阳一点点沉入海面，天空变成橘红色，这是平潭最治愈的时刻。</p>
+  </div>
+</div>
+
+<!-- Day 3 -->
+<div class="attr-card" id="fuqian">
+  <div class="attr-header">
+    <span class="attr-icon">🤿</span>
+    <span class="attr-name">浮潜体验</span>
+    <span class="attr-day">Day 3</span>
+  </div>
+  <div class="attr-body">
+    <p>浮潜是漂浮在水面上，戴着面镜和呼吸管，观赏水下世界的一种活动。你不需要会游泳，只要放松地趴在水面上就可以了。</p>
+    <div class="knowledge">
+      <strong>🔬 为什么戴上呼吸管就能在水下呼吸？</strong> 呼吸管是一根中空的管子，一头咬在嘴里，一头露出水面。当你趴在水面上时，通过管子就能呼吸到水面上的空气，同时脸可以一直埋在水里看风景。平潭的海水很清澈，水下有礁石、海藻和各种小鱼，就像在看一部海底纪录片——只不过这次你是主角。
+    </div>
+    <p>9 月底平潭的海水温度大约 28°C，和洗澡水差不多，非常舒服。浮潜的时候记得带上防水袋，用手机拍下海底的照片，这可是你在陆地看不到的风景。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="tannanwan">
+  <div class="attr-header">
+    <span class="attr-icon">🏝️</span>
+    <span class="attr-name">坛南湾三澳</span>
+    <span class="attr-day">Day 3</span>
+  </div>
+  <div class="attr-body">
+    <p>坛南湾是平潭南边最美的海湾，由好几个澳口（小海湾）连成。今天一口气逛三个，每个风格都不一样。</p>
+    <p><strong>田美澳</strong>的沙子最细，海水呈玻璃蓝色，透明得能看到水底的沙纹。沙滩上有秋千、心形座椅等打卡设施，是拍照的好地方。</p>
+    <p><strong>远垱澳</strong>又叫"白金海滩"，因为这里有大片黑色的礁石群。黑色礁石、白色浪花、蓝色大海——三种颜色撞在一起，视觉冲击力很强，被称为平潭的"小冰岛"。</p>
+    <div class="knowledge">
+      <strong>🔬 黑色礁石是怎么来的？</strong> 这些黑色礁石是火山喷发时形成的玄武岩，年龄比恐龙还大！很久很久以前，海底火山喷发，熔岩冷却后就形成了这种黑色的石头。
+    </div>
+    <p><strong>崎沙澳</strong>是看日落的绝佳位置。沙滩开阔、前方没有遮挡，太阳会正正地沉入海面。日落的时候，天空的颜色会从金黄变成橘红，再变成紫红，像是大自然在变魔术。</p>
+  </div>
+</div>
+
+<!-- Day 4 -->
+<div class="attr-card" id="zanhua">
+  <div class="attr-header">
+    <span class="attr-icon">🌸</span>
+    <span class="attr-name">簪花围</span>
+    <span class="attr-day">Day 4</span>
+  </div>
+  <div class="attr-body">
+    <p>簪花围是泉州蟳埔女传承千年的传统习俗。蟳埔是泉州的一个渔村，那里的妇女世世代代都有簪花的习惯——把鲜花串成花环，一圈一圈盘在发髻上，形成一个"头上花园"。</p>
+    <div class="knowledge">
+      <strong>🌺 为什么要簪花？</strong> 蟳埔村的男人出海打鱼，女人在家里操持一切。她们把最美的花戴在头上，既是对生活的热爱，也期盼出海的家人平安归来。鲜花会枯萎，但蟳埔女的簪花传统却千年不凋。2008 年，簪花围被列入国家级非物质文化遗产。
+    </div>
+    <p>现在不只是蟳埔女，来泉州的游客也可以体验簪花，戴上满头的鲜花，穿上传统服饰，在古街老厝前拍一组照片，做一天"蟳埔女"。你头上戴的每一朵花，都承载着一段千年的渔家故事。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="muou">
+  <div class="attr-header">
+    <span class="attr-icon">🎭</span>
+    <span class="attr-name">提线木偶戏</span>
+    <span class="attr-day">Day 4</span>
+  </div>
+  <div class="attr-body">
+    <p>提线木偶戏是泉州的"绝活"，已经有一千多年的历史了。</p>
+    <div class="knowledge">
+      <strong>🎭 什么是提线木偶？</strong> 就是用线来控制木偶做动作。一个木偶身上通常系着 16 到 30 根线，多的甚至有 50 多根。演员用手指勾住不同的线，就能让木偶走路、跳舞、斟酒、写字，甚至翻跟头——比真人还灵活！木偶的头和手都是用木头雕刻的，画上脸谱，穿上戏服，一个个活灵活现。
+    </div>
+    <p>泉州提线木偶戏是国家级非物质文化遗产，在世界上也很有名。演员在幕后操纵线条，木偶在台前表演，配合着音乐和唱腔，就像一场微型的神仙大片。在中闽百汇看提线木偶，离演员很近，甚至还能互动体验，比在大剧场远远看着有意思多了。看完表演，你可能会想：那些线到底是怎么控制的？这就是提线木偶的魅力——越看越神奇。</p>
+  </div>
+</div>
+
+<!-- Day 5 -->
+<div class="attr-card" id="kaiyuansi">
+  <div class="attr-header">
+    <span class="attr-icon">🛕</span>
+    <span class="attr-name">开元寺</span>
+    <span class="attr-day">Day 5</span>
+  </div>
+  <div class="attr-body">
+    <p>开元寺是泉州最著名的寺庙，始建于唐朝，距今已经有一千三百多年了。</p>
+    <p>寺里最有名的是两座石塔——东塔和西塔。它们是用石头一块一块垒起来的，没有用一根铁钉，却经历了无数次台风和地震，依然屹立不倒。东塔叫"镇国塔"，高 48 米，是中国现存最高的石塔。</p>
+    <div class="knowledge">
+      <strong>🔬 什么是"飞天"？</strong> 大雄宝殿的屋顶下藏着 24 尊"飞天乐伎"。"飞天"是佛教中会飞的天人，她们手持乐器，身姿飘逸，好像在天上飞翔。这些飞天不是画上去的，而是用木头雕刻出来的斗拱构件，既承重又美观，是古代建筑师的智慧结晶。
+    </div>
+    <p>寺里还有很多古老的榕树，树根盘根错节，树冠遮天蔽日。走在古寺里，听着鸟叫声和风铃声，感觉时间都慢了下来。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="xijie">
+  <div class="attr-header">
+    <span class="attr-icon">🏮</span>
+    <span class="attr-name">西街</span>
+    <span class="attr-day">Day 5</span>
+  </div>
+  <div class="attr-body">
+    <p>西街是泉州最古老的街道，已经有一千多年的历史了。街道两侧是"骑楼"——一种南方特有的建筑：一楼的走廊向内缩，形成一条有顶棚的走廊，行人可以遮阳挡雨。</p>
+    <div class="knowledge">
+      <strong>🏠 为什么叫"骑楼"？</strong> 因为二楼"骑"在一楼的走廊上面，就像二楼骑在一楼背上一样。这种建筑是从东南亚传过来的，适合南方炎热多雨的气候。
+    </div>
+    <p>西街是泉州的"美食一条街"。润饼菜是用薄饼皮包着各种菜丝和肉，像一个大号的春卷；海蛎煎是用新鲜海蛎和地瓜粉煎成的饼，外酥内嫩；花生汤是花生熬煮成软糯的甜汤，喝一口暖到心里。走在西街上，一边走一边吃，用味蕾感受泉州的味道——这就是最地道的泉州体验。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="zhonglou">
+  <div class="attr-header">
+    <span class="attr-icon">🏛️</span>
+    <span class="attr-name">钟楼 + 中山路</span>
+    <span class="attr-day">Day 5</span>
+  </div>
+  <div class="attr-body">
+    <p>泉州钟楼是古城的中心地标，建于 1934 年，是一座中西合璧的建筑。钟楼上面有四面钟，东南西北都能看到时间。在那个没有手机的年代，钟楼就是泉州人的"标准时间"。</p>
+    <p>从钟楼拐进去就是中山路，这是泉州最繁华的老商业街。两侧是保存完好的南洋风格骑楼，和西街的骑楼风格略有不同——中山路的骑楼更"洋气"一些，有拱形的窗户、精美的雕花，带着浓浓的东南亚风情。</p>
+    <div class="knowledge">
+      <strong>🔬 为什么泉州有这么多南洋风格的建筑？</strong> 因为以前很多泉州人下南洋（东南亚）做生意，赚了钱就回家乡盖房子，把海外的建筑风格带了回来。这些骑楼就是他们"衣锦还乡"的证明。
+    </div>
+    <p>走在中山路上，抬头看看那些老建筑，想象一下一百年前，这里有多少故事在发生。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="guanyuemiao">
+  <div class="attr-header">
+    <span class="attr-icon">⛩️</span>
+    <span class="attr-name">通淮关岳庙</span>
+    <span class="attr-day">Day 5</span>
+  </div>
+  <div class="attr-body">
+    <p>通淮关岳庙是泉州香火最旺的庙，同时供奉两位大英雄——关羽和岳飞。</p>
+    <p>关羽是三国时期蜀国的名将，以"忠义"闻名天下；岳飞是南宋的抗金英雄，以"精忠报国"著称。两个人虽然相隔近千年，但都是忠诚和勇敢的象征，所以泉州人把他们供奉在同一座庙里。</p>
+    <div class="knowledge">
+      <strong>🎨 什么是"剪瓷雕"？</strong> 庙里最值得看的是屋顶上的"剪瓷雕"——用彩色的碎瓷片拼贴出的人物、花鸟和故事。这些瓷片来自打碎的碗碟，工匠们把它们剪成小块，再一片片拼成精美的图案，铺满整个屋脊。每一幅剪瓷雕都在讲一个故事——有的是三国典故，有的是神话传说。这是闽南建筑艺术的巅峰代表。
+    </div>
+    <p>庙里终年烟雾缭绕，求签许愿的人络绎不绝。这是泉州民间信仰的缩影——在这里，信仰不是高高在上的，而是融入日常生活的。</p>
+  </div>
+</div>
+
+<!-- Day 6 -->
+<div class="attr-card" id="haijiaoguan">
+  <div class="attr-header">
+    <span class="attr-icon">🚢</span>
+    <span class="attr-name">泉州海外交通史博物馆</span>
+    <span class="attr-day">Day 6</span>
+  </div>
+  <div class="attr-body">
+    <p>泉州海外交通史博物馆（简称"海交馆"）是国内唯一专门讲"海上交通历史"的博物馆。</p>
+    <p>博物馆里最震撼的是一艘真正的宋代沉船。1974 年，考古学家在泉州后渚港的泥滩里挖出了这艘船。它已经在海底沉睡了 700 多年，船体里还保留着当年的香料、贝壳和铜钱。</p>
+    <div class="knowledge">
+      <strong>🔬 宋代的泉州有多繁华？</strong> 宋代的泉州叫"刺桐港"，是当时世界上最繁忙的港口之一。来自阿拉伯、波斯、印度、东南亚的商船在这里停靠，带来了香料、珠宝、药材，带走了中国的丝绸、瓷器、茶叶。泉州就像一个"世界超市"，不同国家的人在这里做生意、生活、通婚。二楼的宗教石刻展馆更神奇——伊斯兰教、印度教、基督教的石刻居然同时出现在泉州，说明宋代的泉州是一个真正开放的国际化城市。
+    </div>
+    <p>这艘沉船就是宋代海上丝绸之路的"活证据"，站在它面前，仿佛能听到 700 年前港口的人声鼎沸。</p>
+  </div>
+</div>
+
+<div class="attr-card" id="feiyiguan">
+  <div class="attr-header">
+    <span class="attr-icon">🎨</span>
+    <span class="attr-name">泉州非遗馆</span>
+    <span class="attr-day">Day 6</span>
+  </div>
+  <div class="attr-body">
+    <p>"非遗"就是"非物质文化遗产"——那些看不见、摸不着，但代代相传的技艺和手艺。</p>
+    <p>泉州非遗馆有 650 多件展品，分四大展区，涵盖了闽南地区最精彩的非遗项目：石雕、木偶头雕刻、花灯、南音、陶瓷烧制……每一件展品背后都是几百甚至上千年的传承。</p>
+    <div class="knowledge">
+      <strong>✋ 最有趣的部分！</strong> 这里有 15 个非遗工坊和互动舞台，可以看到传承人现场演示手艺，还能亲手体验：泉州剪纸怎么用一把剪刀剪出复杂的花纹？木偶头怎么一刀一刀雕刻出表情？花灯怎么扎出漂亮的形状？妆糕人怎么用糯米捏出各种人物？这是整个行程中参与感最强的一个地方，看完展览再动手做一做，你会发现：原来这些"老手艺"这么酷。
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>用 <span class="heart">❤</span> 为小朋友准备的旅行小手册</p>
+  <p style="margin-top:8px;"><a href="index.html" style="color:var(--primary);text-decoration:none;">← 返回完整攻略</a></p>
+</div>
+
+</body>
+</html>

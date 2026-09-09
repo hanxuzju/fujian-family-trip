@@ -159,7 +159,23 @@
     font-weight: 700;
     margin-bottom: 6px;
     color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
   }
+  .intro-link {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--primary);
+    background: var(--tag-bg);
+    padding: 1px 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .intro-link:hover { background: #dbeafe; }
   .section p {
     color: var(--text-secondary);
     font-size: 14px;
@@ -420,7 +436,7 @@
 
     <div class="section">
       <div class="section-label"><span class="icon">🏖️</span> 下午</div>
-      <div class="section-title">龙王头海滩</div>
+      <div class="section-title">龙王头海滩 <a href="attractions.html#longwangtou" class="intro-link">简介</a></div>
       <p>安顿好后直奔龙王头海滩，这是平潭最大的公共海滩，离城区近，沙质细腻。下午阳光正好，让小朋友先痛快地玩沙、踩浪，感受一下海岛的节奏。海滩免费开放，傍晚时分光线柔和，适合拍照。</p>
       <div class="tip"><strong>出门前提醒：</strong>带个小袋子，沙滩上能捡到漂亮的小贝壳，装回来当纪念。</div>
     </div>
@@ -458,14 +474,14 @@
 
     <div class="section">
       <div class="section-label"><span class="icon">📍</span> 第一站</div>
-      <div class="section-title">仙人井</div>
+      <div class="section-title">仙人井 <a href="attractions.html#xianrenjing" class="intro-link">简介</a></div>
       <p>上午出发先去仙人井，这是一个天然海蚀洞穴，海浪涌入洞穴拍打岩壁发出轰隆巨响，非常壮观。不用全程走完步道，看一眼主井即可，约 20-30 分钟。需提前在"平潭旅游"公众号预约门票。</p>
       <div class="tip"><strong>备选：镜沙</strong>——如果不想去仙人井，可以换成镜沙。导航搜"星辰大海·镜沙"，这里有少见的黑色火山岩礁石沙滩，被称为国内"小冰岛"。退潮时可进入黑石洞拍逆光剪影，也可在礁石区赶海找小螃蟹和贝壳。游玩约 1-1.5 小时，注意礁石湿滑。</div>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="icon">📍</span> 第二站</div>
-      <div class="section-title">北港文创村</div>
+      <div class="section-title">北港文创村 <a href="attractions.html#beigang" class="intro-link">简介</a></div>
       <p>从仙人井沿海边公路开约 10 分钟到达北港村，这里是平潭最有特色的石头厝村落，整村用花岗岩建造，错落有致地分布在山坡上，面朝大海。村里聚集了不少文创小店、咖啡馆和手作工坊，很适合带孩子慢慢逛、拍照。石头厝博物馆可以了解海岛渔民的生活历史。游玩约 1-1.5 小时。</p>
     </div>
 
@@ -476,13 +492,13 @@
 
     <div class="section">
       <div class="section-label"><span class="icon">📍</span> 第三站</div>
-      <div class="section-title">北部湾生态廊道 F2 观景台</div>
+      <div class="section-title">北部湾生态廊道 F2 观景台 <a href="attractions.html#f2" class="intro-link">简介</a></div>
       <p>从北港村沿北部生态廊道前往 F2 观景台，这段沿海公路本身就是平潭最美的风景道之一，曾获评全国"十大最美农村路"。F2 观景台的核心亮点是一段 45 米长的悬空玻璃栈道，站在上面脚下就是悬崖和大海，可以同时看到碧海、风车阵和沿海 S 弯公路，视野极其开阔。小朋友走在玻璃上既紧张又兴奋，是很棒的体验。游玩约 1 小时。</p>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="icon">🌇</span> 日落</div>
-      <div class="section-title">长江澳风车田</div>
+      <div class="section-title">长江澳风车田 <a href="attractions.html#changjiangao" class="intro-link">简介</a></div>
       <p>从 F2 观景台直接前往长江澳风车田看日落，不用走回头路。夕阳西下时，金色光线洒在白色风车和沙滩上，是平潭最美的时刻。巨大的风车矗立在金色沙滩上，退潮时可以踩水玩沙，涨潮时风车与浪花同框也很壮观。找一片沙滩坐下来，看着太阳一点点沉入海面，非常治愈。</p>
     </div>
 
@@ -519,14 +535,14 @@
 
     <div class="section">
       <div class="section-label"><span class="icon">🤿</span> 上午</div>
-      <div class="section-title">浮潜体验</div>
+      <div class="section-title">浮潜体验 <a href="attractions.html#fuqian" class="intro-link">简介</a></div>
       <p>上午去体验平潭的浮潜项目。9 月底平潭海水温度约 28°C，非常适合下水。浮潜配备面镜和呼吸管，在水面漂浮观赏海底礁石和鱼群，门槛较低，10 岁小朋友在教练陪同下可以参加。建议选择有资质的水上运动俱乐部（如悦海水上运动俱乐部等），费用约 268-288 元/人，含装备和教练指导，全程约 1-1.5 小时。建议提前电话确认对儿童的年龄要求并预约。</p>
       <div class="tip"><strong>出门前提醒：</strong>带好手机防水袋（水下拍照用）和一套换洗衣物，浮潜后会湿身。</div>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="icon">🏖️</span> 下午</div>
-      <div class="section-title">坛南湾三澳连游</div>
+      <div class="section-title">坛南湾三澳连游 <a href="attractions.html#tannanwan" class="intro-link">简介</a></div>
       <p><strong>田美澳：</strong>打车先到坛南湾的田美澳海滩，这里是坛南湾的核心沙滩区，沙子极细柔软，海水通透呈玻璃蓝色。沙滩上有网红秋千、心形座椅、彩色躺椅等打卡设施，拍照非常出片。还有摩托艇、帆船、快艇、桨板等水上项目（单项约 50-100 元），不过这些项目大概率会湿身，不太建议玩；如果一定要玩，需提前备好换洗衣物。午饭在田美澳附近解决，玩够之后乘坐观光车前往下一个澳口。</p>
       <p><strong>远垱澳（白金海滩）：</strong>风格和田美澳截然不同——这里以大片的黑色礁石群闻名，黑礁石配上白色浪花和蓝色大海，视觉冲击力很强，是平潭"小冰岛"风格的代表。在礁石上走走拍拍，打卡拍照约 40 分钟。</p>
       <p><strong>崎沙澳：</strong>傍晚坐观光车前往崎沙澳看日落。崎沙澳是坛南湾沿线观赏日落的绝佳位置，沙滩开阔、视野无遮挡，太阳缓缓沉入海面的画面非常治愈。</p>
@@ -579,7 +595,7 @@
 
     <div class="section">
       <div class="section-label"><span class="icon">🌸</span> 下午</div>
-      <div class="section-title">西街簪花体验</div>
+      <div class="section-title">西街簪花体验 <a href="attractions.html#zanhua" class="intro-link">简介</a></div>
       <p>到达泉州第一件事——先美美拍照。簪花围是泉州蟳埔女传承千年的传统习俗，把鲜花串成花环盘在发髻上，形成"头上花园"，2008 年列入国家级非遗。簪花店选定<strong>"花秀时光簪花（杨姐西街店）"</strong>，提供完整的花围造型和传统服饰，199/人。带女儿一起簪花拍照，以骑楼老街和开元寺双塔为背景，非常出片。建议穿浅色衣服搭配簪花更上镜。体验约 1.5-2 小时。</p>
     </div>
 
@@ -590,7 +606,7 @@
 
     <div class="section">
       <div class="section-label"><span class="icon">🎭</span> 晚上</div>
-      <div class="section-title">提线木偶戏（中闽百汇）</div>
+      <div class="section-title">提线木偶戏（中闽百汇） <a href="attractions.html#muou" class="intro-link">简介</a></div>
       <p>前往中闽百汇一楼看一场提线木偶表演（票价约 30-50 元）。泉州提线木偶是国家级非遗，有上千年历史，木偶在演员手中翻飞跳跃、斟酒写字，非常精彩，10 岁的小朋友会看得入迷。这里还能亲手体验互动，比大剧场远远看着更有意思。演出约 40 分钟，需提前在大众点评购票并联系商家预约场次。</p>
     </div>
   </div>
@@ -607,25 +623,25 @@
 
     <div class="section">
       <div class="section-label"><span class="icon">🛕</span> 上午</div>
-      <div class="section-title">开元寺</div>
+      <div class="section-title">开元寺 <a href="attractions.html#kaiyuansi" class="intro-link">简介</a></div>
       <p>上午前往开元寺，这是泉州的地标，始建于唐代的千年古寺，免费开放，需提前在"泉州开元寺"公众号预约。寺内有两座宋代石塔（东西塔），是泉州天际线的标志。大雄宝殿的飞天斗拱值得细看，24 尊飞天乐伎雕刻精美。寺内古榕遮天，氛围宁静，适合带孩子慢慢走。可按需约馆内讲解，带孩子听讲解会更有收获。约 1.5 小时。</p>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="icon">🏮</span> 上午/中午</div>
-      <div class="section-title">西街</div>
+      <div class="section-title">西街 <a href="attractions.html#xijie" class="intro-link">简介</a></div>
       <p>从开元寺出来就是西街，这条千年古街两侧骑楼林立，各种老字号和小吃摊。一路走一路吃：润饼菜、海蛎煎、花生汤、麻糬……边走边逛，午饭也可以在西街解决。</p>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="icon">🏛️</span> 下午</div>
-      <div class="section-title">钟楼 + 中山路</div>
+      <div class="section-title">钟楼 + 中山路 <a href="attractions.html#zhonglou" class="intro-link">简介</a></div>
       <p>沿着西街走到尽头就是泉州钟楼，这里是古城的中心地标。从钟楼拐入中山路，这条骑楼长廊是泉州最繁华的商业街，两侧南洋风格的骑楼建筑保存完好，很适合拍照。一路逛逛走走，感受老泉州的生活气息。</p>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="icon">⛩️</span> 傍晚</div>
-      <div class="section-title">通淮关岳庙</div>
+      <div class="section-title">通淮关岳庙 <a href="attractions.html#guanyuemiao" class="intro-link">简介</a></div>
       <p>从中山路步行可达通淮关岳庙（<strong>18:30 闭园</strong>，注意安排好时间）。这是泉州香火最旺的庙宇，同时供奉关羽和岳飞，当地人亲切地称"关岳庙"。庙宇虽不大但气势恢宏，最值得看的是屋顶的剪瓷雕——用彩色碎瓷片拼贴出的人物花鸟栩栩如生，层层叠叠布满整个屋脊，是闽南建筑艺术的巅峰代表。庙内终年烟雾缭绕，求签许愿的本地人络绎不绝，可以带孩子感受一下泉州民间信仰的浓厚氛围。免费开放，约 30 分钟。</p>
     </div>
   </div>
@@ -640,13 +656,13 @@
   <div class="day-body">
     <div class="section">
       <div class="section-label"><span class="icon">🚢</span> 上午</div>
-      <div class="section-title">泉州海外交通史博物馆</div>
+      <div class="section-title">泉州海外交通史博物馆 <a href="attractions.html#haijiaoguan" class="intro-link">简介</a></div>
       <p>早起出发，打车前往泉州海外交通史博物馆（简称"海交馆"），这是国内唯一以海外交通史为主题的专题博物馆，免费开放，需提前在微信小程序"海丝旅游荟"预约。馆内最震撼的是后渚港出土的宋代海船——一艘 1974 年打捞上来的真实沉船，船体内还保留着香料、贝壳等出土文物，可以直观感受宋代海上贸易的繁盛。二楼的宗教石刻展馆收藏了大量伊斯兰教、印度教、基督教石刻，印证了泉州作为"世界宗教博物馆"的地位。小朋友对古船会很感兴趣，参观约 1-1.5 小时。可按需约馆内讲解。建议 8:30-9:00 到馆，给后面的非遗馆留足时间。</p>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="icon">🎨</span> 上午</div>
-      <div class="section-title">泉州非遗馆</div>
+      <div class="section-title">泉州非遗馆 <a href="attractions.html#feiyiguan" class="intro-link">简介</a></div>
       <p>海交馆出来后打车前往非遗馆（约 10 分钟）。泉州非遗馆位于东湖街侨乡体育馆内，650 余件展品分四大展区，涵盖石雕、木偶头雕刻、花灯、南音、陶瓷烧制等闽南非遗精华。最大的亮点是 15 个非遗工坊和互动舞台——传承人亲自示范指导，可以亲手体验泉州剪纸、木偶头雕刻、花灯制作、妆糕人等手工项目，还能看提线木偶戏表演并和演员合影。这是整个行程中小朋友参与感最强的环节，建议预留 1.5-2 小时。可按需约馆内讲解。免费开放，需通过"泉州市文化馆泉州市非遗保护中心"公众号实名预约（一个手机号只能预约一人，夫妻需各自用不同手机号分别预约，小孩不用预约），部分工坊需单独线上预约。</p>
     </div>
 
